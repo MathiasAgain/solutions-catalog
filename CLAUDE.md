@@ -12,19 +12,18 @@ Customer-facing microsite for an internal Orkla team offering **data & analytics
 
 | File | Purpose | Audience |
 |------|---------|----------|
-| `index.html` | Landing microsite — two-card entry point | Everyone |
-| `solutions-overview.html` | Solutions Overview — challenge, outcomes, delivery model, tiers, investment | Business stakeholders, sponsors |
-| `engagement-guide.html` | Engagement Guide — effort estimates, interactive planning tools, starter packs, roadmap | Business planners, project sponsors |
+| `index.html` | Main page — the complete solutions catalog (single page) | Business stakeholders |
+| `engagement-guide.html` | Engagement Guide — effort estimates, interactive tools, starter packs, roadmap | Business planners, project sponsors |
 
 ## Key Context
 
 ### Who We Are
-Internal Orkla team (not external vendors). We hand over everything — code, data, infrastructure. No licensing model. Our edge is the **Orkla Accelerator**: a continuously evolving toolkit of proven methods refined across every engagement. Each customer gets a copy; we keep the evolving version.
+Internal Orkla team (not external vendors). We hand over everything deployed in the customer's environment. No licensing model. Our edge is the **Orkla Accelerator**: a continuously evolving toolkit of proven methods refined across every engagement. Each customer gets a copy; we keep the evolving version.
 
 ### Delivery Model
 - **Orkla Accelerator** — our toolkit, forked for each engagement (matching, processing, quality)
 - **Business Rules & Configuration** — customer-owned (source definitions, matching rules, KPI formulas)
-- **Infrastructure** — customer-owned environment, all data stays with the customer
+- **Infrastructure** — customer-owned platform, managed by Orkla IT, all data stays with customer
 
 ### Engagement Types
 - **Build** — new deployment (project engagement)
@@ -50,7 +49,7 @@ Internal Orkla team (not external vendors). We hand over everything — code, da
 - Tier 1 Foundation → **teal**
 - Tier 2 Multi-Source → **blue**
 - Tier 3 Enterprise → **purple**
-- Currency & Fiscal Overlay → **amber** (add-on, NOT "Tier 4")
+- Currency & Calendar Alignment → **amber** (add-on)
 
 ## Canonical Numbers
 
@@ -61,71 +60,40 @@ Internal Orkla team (not external vendors). We hand over everything — code, da
 | Multi-Source | 290–685h | 9–14 weeks | $150–600 | 16–40h |
 | Enterprise | 820–1,900h | 27–36+ weeks | $400–1,500 | 40–120h |
 
-### Add-Ons
+### Add-Ons (6 total)
 | Add-On | Hours | Monthly |
 |--------|-------|---------|
 | Power BI Reports | 40–80h | $20–80 |
-| Advanced Quality & Alerting | 30–60h | $20–80 |
+| Data Quality & Alerts | 40–80h | $20–80 |
 | Business Review Portal | 60–120h | $30–100 |
 | Historical Tracking | 30–50h | +$10–40 |
 | Additional Data Source | 40–85h/src | +$30–100 |
-| Currency & Fiscal Overlay | 120–320h | $50–200 |
-| Data Integration Layer | 40–80h | $30–100 |
-| Automated Anomaly Detection | 40–80h | $20–80 |
+| Currency & Calendar Alignment | 120–320h | $50–200 |
 
-**Important**: If you change a number, update it in BOTH HTML files. The same values appear in tier cards, investment tables, recommendation engines, and effort breakdowns.
+**Important**: If you change a number, update it in BOTH HTML files.
 
-## Solutions Overview Section Order
-Deliberate narrative flow — do not rearrange without reason:
-1. Hero
-2. Challenge (FMCG-specific pain: sell-in/sell-out, distributor formats, promotional reconciliation)
-3. **Outcomes** (what life looks like after unification)
-4. **Tiers** (scope levels with deliverables list)
-5. **Delivery Model** (why us — the accelerator, full handover)
-6. Add-Ons
-7. Timeline (Gantt)
-8. Investment (cost table)
-9. Recommendation Engine
+## Main Page Section Order (index.html)
+1. Hero (with audience statement)
+2. **Tiers** (our offerings + tier selection guide)
+3. Proof-point banner
+4. Challenge (FMCG-specific pain)
+5. **Outcomes** (what changes for your team)
+6. **How We Work** (delivery model — 3 pillars)
+7. Add-Ons (6 cards)
+8. Investment (cost table with explanatory footnotes)
+9. FAQ (4 questions)
 10. CTA
 
-**Removed**: Architecture diagram section (saved for future internal technical twin)
-
-## Interactive Tools
-Both docs have JavaScript-powered tools. Keep logic in sync:
-- **Tier Recommendation Engine** — 4-question scoring (sources, history, governance, timeline). Same logic in both files.
-- **Business Case Calculator** — Engagement Guide only. Conservative defaults (80h, $75/hr, 30% reduction).
-- **Readiness Scorecard** — Engagement Guide only. 5-dimension RAG assessment.
-- **BU Maturity Radar** — Engagement Guide only. SVG radar chart, score-based wave sequencing.
-
 ## Design & Tone Guidelines
-- **Business-first language** — no technical jargon (no Bronze/Silver/Gold, no SCD2, no crosswalks, no schema contracts, no Delta Live Tables)
-- **Orkla branded** — burgundy primary color (#7E0626), warm backgrounds, professional tone
-- **Outcome-focused** — lead with what the business gets, not how the technology works
+- **Business-first language** — no technical jargon
+- **Orkla branded** — burgundy primary color (#7E0626), warm backgrounds
+- **Outcome-focused** — lead with what the business gets
 - **No overselling** — confident but understated
+- **Infrastructure is managed by Orkla IT**, not customer's local IT
 
 ## Known Issues / Pending Work
-
-### Placeholder
-- `contact@example.com` appears in 3 places (2 files). Replace when real email provided.
-
-### Remaining Content Gaps
-- **No competitive positioning** — why us vs SI, MDM tool, or DIY
-- **No social proof** — no past engagement references
-- **Calculator needs guidance** — benchmark ranges / tooltips for inputs
-- **Missing content**: before/after visual, post-handover guide, FAQ section
-- **No mobile hamburger nav on Solutions Overview** — nav overflows on small screens
-- **No print stylesheet** — documents won't PDF cleanly (fixed navs, hidden reveal elements)
-- **Technical twin** — architecture diagram and deep technical content to be developed as separate internal doc
-
-### Resolved (Mar 2026)
-- Full rebrand from "SDH / Sales Data Harmonization" to "Orkla Data & Analytics"
-- Color palette → Orkla burgundy (#7E0626)
-- Architecture diagram → removed from Solutions Overview (for technical twin)
-- Mapping workstream, SOW, Risks, Prerequisites → removed from Engagement Guide (for technical twin)
-- All technical jargon stripped from both documents
-- File renamed: Pitch_Deck → solutions-overview.html
-- File renamed: Project_Delivery_Overview → engagement-guide.html
-- Repo renamed from sdh-solutions-catalog → solutions-catalog
+- `contact@example.com` placeholder in CTA — replace when real email provided
+- Engagement guide still has hidden sections (mapping, SOW, risks) — to be cleaned or repurposed for internal technical twin
 
 ## Reference Document
 `C:\Users\medelm\Sales_Data_Harmonization_Estimate.md` — original effort estimate used as source of truth for Tier 1 numbers. Not in the repo.
