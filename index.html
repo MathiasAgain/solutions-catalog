@@ -82,7 +82,8 @@ p{color:var(--muted)}
 .tc-topline{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;gap:8px}
 .tc-badge{display:inline-block;padding:3px 10px;border-radius:5px;font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em}
 .t1 .tc-badge{background:rgba(13,124,102,.1);color:var(--teal)}.t2 .tc-badge{background:rgba(46,80,144,.1);color:var(--blue)}.t3 .tc-badge{background:rgba(107,79,160,.1);color:var(--purple)}
-.tc-example{font-size:.66rem;font-weight:600;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;background:var(--bg);border:1px dashed var(--line);border-radius:5px;white-space:nowrap}
+.tc-example{font-size:.66rem;font-weight:600;color:var(--faint);text-transform:uppercase;letter-spacing:.06em;padding:3px 8px;background:var(--bg);border:1px dashed var(--line);border-radius:5px;white-space:nowrap;text-decoration:none;transition:var(--ease)}
+a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-style:solid;background:var(--green-faint)}
 .tc-body{padding:18px 22px 22px;display:flex;flex-direction:column;flex:1}
 .tc-feat{list-style:none;margin-bottom:18px}
 .tc-feat li{padding:5px 0;font-size:.84rem;color:var(--muted);display:flex;align-items:flex-start;gap:8px}
@@ -151,6 +152,7 @@ p{color:var(--muted)}
 .gov-stop-card{text-align:left;padding:18px 20px;background:var(--green-faint);border:1px solid var(--line-l);border-radius:10px;display:flex;flex-direction:column}
 .gov-stop-card .gsc-t{font-size:.92rem;font-weight:700;color:var(--green-dark);margin-bottom:6px}
 .gov-stop-card .gsc-d{font-size:.78rem;color:var(--muted);line-height:1.5}
+.gov-stop-card .info-block.biz{margin-top:auto}
 @media(max-width:780px){.gov-stops{grid-template-columns:1fr}}
 
 /* Info blocks (shared by Governance + Operations) */
@@ -160,17 +162,19 @@ p{color:var(--muted)}
 .info-block.biz .info-block-label{color:var(--amber)}
 .info-block-text{font-size:.75rem;color:var(--ink);line-height:1.55}
 
-/* Operations */
-.ops-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-top:14px}
-.ops-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;transition:var(--ease);position:relative;overflow:hidden}
+/* Operations — use subgrid so header/desc/practice/biz rows align across all 3 cards */
+.ops-grid{display:grid;grid-template-columns:repeat(3,1fr);grid-template-rows:auto auto auto auto;gap:14px;margin-top:14px}
+.ops-card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:22px 24px;transition:var(--ease);position:relative;overflow:hidden;display:grid;grid-template-rows:subgrid;grid-row:span 4;gap:10px}
 .ops-card::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--green-mid);transform:scaleX(.25);transform-origin:left;transition:var(--ease)}
 .ops-card:nth-child(2)::before{transform:scaleX(.6)}
 .ops-card:nth-child(3)::before{transform:scaleX(1)}
 .ops-card:hover{border-color:var(--green-mid);transform:translateY(-3px);box-shadow:var(--sh-m)}
+.ops-card-head{align-self:start}
 .ops-role{font-size:.64rem;font-weight:700;color:var(--green-mid);text-transform:uppercase;letter-spacing:.1em;margin-bottom:8px}
-.ops-title{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:6px}
-.ops-desc{font-size:.82rem;color:var(--muted)}
-@media(max-width:780px){.ops-grid{grid-template-columns:1fr}}
+.ops-title{font-size:1rem;font-weight:700;color:var(--ink);margin-bottom:0}
+.ops-desc{font-size:.82rem;color:var(--muted);align-self:start;margin:0}
+.ops-card .info-block{margin-top:0;align-self:start}
+@media(max-width:780px){.ops-grid{grid-template-columns:1fr;grid-template-rows:none}.ops-card{grid-template-rows:none;grid-row:auto;display:flex;flex-direction:column}}
 
 /* Up-skilling */
 .skill-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-top:28px}
@@ -395,7 +399,7 @@ p{color:var(--muted)}
 <section class="slide" id="steps" style="padding:64px 0 32px">
   <div class="container">
     <div class="rv"><div class="label">Configure Your Solution</div>
-    <h2>Build it in four steps</h2>
+    <h2>Build it in 4 steps</h2>
     <p class="subtitle">Pick a tier and platform, decide how involved you want us to be, add up-skilling where you need it, and extend with add-ons.</p></div>
     <div class="step-strip rv rv-d1">
       <a href="#step1" class="step-card">
@@ -434,7 +438,7 @@ p{color:var(--muted)}
     <div class="tier-row">
       <div class="tc t1 rv rv-d1">
         <div class="tc-head">
-          <div class="tc-topline"><div class="tc-badge">Tier 1</div><div class="tc-example">Example · Care Finland</div></div>
+          <div class="tc-topline"><div class="tc-badge">Tier 1</div><a class="tc-example" href="#case-care-fi">Example · Care Finland</a></div>
           <h3>Foundation</h3>
           <p style="font-size:.84rem;color:var(--muted);margin-top:3px">Single BU, 2 core sources (e.g. Nielsen + SAP)</p>
         </div>
@@ -459,7 +463,7 @@ p{color:var(--muted)}
       </div>
       <div class="tc t2 rv rv-d2">
         <div class="tc-head">
-          <div class="tc-topline"><div class="tc-badge">Tier 2</div><div class="tc-example">Example · Coming soon</div></div>
+          <div class="tc-topline"><div class="tc-badge">Tier 2</div><a class="tc-example" href="#cases">Example · Coming soon</a></div>
           <h3>Multi-Source</h3>
           <p style="font-size:.84rem;color:var(--muted);margin-top:3px">Single BU, 3 – 5 sources (e.g. + POS, TPM)</p>
         </div>
@@ -484,7 +488,7 @@ p{color:var(--muted)}
       </div>
       <div class="tc t3 rv rv-d3">
         <div class="tc-head">
-          <div class="tc-topline"><div class="tc-badge">Tier 3</div><div class="tc-example">Example · Snacks PortCo</div></div>
+          <div class="tc-topline"><div class="tc-badge">Tier 3</div><a class="tc-example" href="#case-snacks-portco">Example · Snacks PortCo</a></div>
           <h3>PortCo</h3>
           <p style="font-size:.84rem;color:var(--muted);margin-top:3px">Multiple BUs, multiple sources</p>
         </div>
@@ -528,7 +532,7 @@ p{color:var(--muted)}
   <div class="container">
     <div class="rv"><div class="label">Step 02 · Support Level</div>
     <h2>Decide how involved you want us to be</h2>
-    <p class="subtitle">Three dimensions — master data, governance, and operations — each with a clear spectrum from do-it-yourself to fully managed.</p></div>
+    <p class="subtitle">3 dimensions — master data, governance, and operations — each with a clear spectrum from do-it-yourself to fully managed.</p></div>
 
     <!-- Master data -->
     <div class="sup-section rv rv-d1">
@@ -635,42 +639,48 @@ p{color:var(--muted)}
       <div class="sup-head"><div class="sup-num">02 · C</div><div class="sup-title">Operations &amp; maintenance</div><div class="sup-tag">Can you run it? Do you want to?</div></div>
       <div class="ops-grid">
         <div class="ops-card">
-          <div class="ops-role">Option A</div>
-          <div class="ops-title">You run it</div>
+          <div class="ops-card-head">
+            <div class="ops-role">Option A</div>
+            <div class="ops-title">You run it</div>
+          </div>
           <div class="ops-desc">Full handover. Your team owns monitoring, new features, and incident response.</div>
           <div class="info-block">
             <span class="info-block-label">In practice</span>
-            <div class="info-block-text">A pipeline fails at 03:00. Your on-call engineer gets the Teams alert, checks the logs in Databricks, fixes the source issue, and reruns the job before the morning commercial standup.</div>
+            <div class="info-block-text">Your team handles alerts, investigates pipeline issues, and owns changes to sources, mapping, and business logic going forward.</div>
           </div>
           <div class="info-block biz">
             <span class="info-block-label">For your business</span>
-            <div class="info-block-text">Complete independence. No retainer costs after handover. But it only works if you have a capable data team — and the on-call commitment that comes with it.</div>
+            <div class="info-block-text">Complete independence. No ongoing retainer. It works well when you have a data team with the capacity to own the platform end-to-end.</div>
           </div>
         </div>
         <div class="ops-card">
-          <div class="ops-role">Option B</div>
-          <div class="ops-title">We run it together</div>
-          <div class="ops-desc">Shared ops. You handle day-to-day, we pair with you on new sources, upgrades, and tricky incidents.</div>
+          <div class="ops-card-head">
+            <div class="ops-role">Option B</div>
+            <div class="ops-title">We run it together</div>
+          </div>
+          <div class="ops-desc">Shared ops. You handle day-to-day, we step in for larger changes or trickier issues.</div>
           <div class="info-block">
             <span class="info-block-label">In practice</span>
-            <div class="info-block-text">Your team handles the Monday refresh and basic monitoring. When a new POS source lands, we pair with you for a week to onboard it. Quarterly accelerator upgrades are a joint exercise.</div>
+            <div class="info-block-text">Your team keeps the platform running and handles routine changes. We pair with you on new sources, accelerator upgrades, and anything that needs deeper platform knowledge.</div>
           </div>
           <div class="info-block biz">
             <span class="info-block-label">For your business</span>
-            <div class="info-block-text">Lower cost than fully managed, with a safety net when things get tricky. Your team keeps learning, so dependency on us decreases over time — the growth path.</div>
+            <div class="info-block-text">Lower cost than fully managed, with a safety net for the parts that matter most. Your team keeps learning, so dependency on us naturally decreases over time.</div>
           </div>
         </div>
         <div class="ops-card">
-          <div class="ops-role">Option C</div>
-          <div class="ops-title">We run it for you</div>
-          <div class="ops-desc">Managed service. We handle everything — monitoring, maintenance, new features — on an agreed retainer.</div>
+          <div class="ops-card-head">
+            <div class="ops-role">Option C</div>
+            <div class="ops-title">We run it for you</div>
+          </div>
+          <div class="ops-desc">Managed service. We handle monitoring, maintenance, and new features on an agreed scope.</div>
           <div class="info-block">
             <span class="info-block-label">In practice</span>
-            <div class="info-block-text">We monitor pipelines around the clock, fix incidents before you notice, deliver new features on a sprint cadence, and send a monthly ops report. Your team just sees Power BI refreshed on time.</div>
+            <div class="info-block-text">We monitor the platform, resolve issues, and deliver changes as they're needed. Your team just sees reports refreshed and new features land when requested.</div>
           </div>
           <div class="info-block biz">
             <span class="info-block-label">For your business</span>
-            <div class="info-block-text">Zero operational burden. Your team focuses entirely on commercial decisions. Cost is predictable and capped by the retainer, so there are no surprises at quarter-end.</div>
+            <div class="info-block-text">Zero operational burden on your team. Scope and cost are agreed upfront, so there are no surprises.</div>
           </div>
         </div>
       </div>
@@ -700,7 +710,7 @@ p{color:var(--muted)}
       <div class="skill-card rv rv-d2">
         <div class="skill-icon">MD</div>
         <div class="skill-title">Master data with Eddy</div>
-        <div class="skill-desc">How to maintain product &amp; customer mappings in Eddy, review algorithm suggestions, and keep definitions clean over time.</div>
+        <div class="skill-desc">Maintain product &amp; customer mappings in Eddy and validate algorithm suggestions to keep definitions clean.</div>
         <div class="skill-meta"><span class="smt">Hands-on</span><span>1–2 days</span></div>
       </div>
       <div class="skill-card rv rv-d2">
@@ -771,7 +781,7 @@ p{color:var(--muted)}
           <span class="case-link muted">Full write-up coming soon</span>
         </div>
       </div>
-      <div class="case-card rv rv-d2">
+      <div class="case-card rv rv-d2" id="case-snacks-portco">
         <div class="case-cover snacks">
           <div class="cc-tier">Tier 3 · PortCo</div>
           <div class="cc-label">Snacks PortCo</div>
