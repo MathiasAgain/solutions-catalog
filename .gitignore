@@ -1,0 +1,6 @@
+# Local tooling artifacts
+.claude/
+.playwright-mcp/
+
+# Session screenshots (scratch — never commit)
+*.png
