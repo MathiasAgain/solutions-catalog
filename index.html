@@ -252,58 +252,55 @@ p{color:var(--muted)}
 .stage-pill-sub{font-size:.62rem;font-weight:600;color:var(--green-mid);text-transform:uppercase;letter-spacing:.06em}
 .stage-arrow{display:grid;place-items:center;color:var(--green-mid);font-size:1.1rem;opacity:.5}
 
-/* Canvas */
-.arch-canvas{display:grid;grid-template-columns:auto 1fr auto;gap:18px;align-items:stretch;background:var(--green-faint);border:1px solid var(--line);border-radius:12px;padding:22px;position:relative;z-index:1}
-.arch-region{display:flex;flex-direction:column;gap:10px;min-width:140px}
-.arch-region.arch-pipeline{min-width:0;flex:1}
-.region-label{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--faint);text-align:center}
+/* SVG scene */
+.arch-scene-wrap{background:linear-gradient(160deg,#F8FCF0 0%,#EEF4DE 55%,#E2ECCF 100%);border:1px solid var(--line);border-radius:14px;padding:10px;position:relative;z-index:1;overflow:hidden}
+.arch-scene-wrap::before{content:'';position:absolute;top:-20%;right:-15%;width:60%;height:140%;background:radial-gradient(ellipse,rgba(39,103,73,.08),transparent 65%);pointer-events:none}
+.arch-scene-wrap::after{content:'';position:absolute;bottom:-30%;left:-10%;width:50%;height:120%;background:radial-gradient(ellipse,rgba(16,163,127,.06),transparent 65%);pointer-events:none}
+.arch-scene{display:block;width:100%;height:auto;max-width:100%;position:relative;z-index:1}
 
-/* Nodes (source + consumer) */
-.region-items{display:flex;flex-direction:column;gap:7px;flex:1}
-.node{background:var(--card);border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:flex;align-items:center;gap:9px;font-size:.76rem;font-weight:600;color:var(--ink);transition:all .4s var(--ease)}
-.node-icon{width:18px;height:18px;fill:none;stroke:var(--green-mid);stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;flex-shrink:0}
-.node.dim{opacity:.22;filter:grayscale(.7)}
-.node.dim .node-icon{stroke:var(--faint)}
-.source-node:hover:not(.dim){border-color:var(--green-mid);transform:translateX(2px)}
-.consumer-node:hover:not(.dim){border-color:var(--green-mid);transform:translateX(-2px)}
+/* SVG interactive elements */
+.svg-stage{cursor:pointer;transition:transform .45s cubic-bezier(.4,0,.2,1);transform-box:fill-box;transform-origin:center}
+.svg-stage:hover{transform:translateY(-5px)}
+.svg-stage.active{transform:translateY(-8px)}
+.svg-stage-glow{opacity:0;transition:opacity .5s ease}
+.svg-stage.active .svg-stage-glow{opacity:1}
+.svg-stage-ring{opacity:0;transition:opacity .5s ease}
+.svg-stage.active .svg-stage-ring{opacity:.85}
+.svg-node{transition:opacity .5s ease,transform .4s ease}
+.svg-flow{transition:opacity .5s ease}
 
-/* Pipeline */
-.pipeline-flow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr auto 1fr;gap:6px;align-items:stretch;padding:6px 4px;flex:1}
-.layer-node{background:var(--card);border:2px solid var(--line);border-radius:10px;padding:16px 8px 14px;text-align:center;cursor:pointer;transition:var(--ease);display:flex;flex-direction:column;align-items:center;gap:6px;position:relative;min-width:0}
-.layer-node:hover{border-color:var(--green-mid);transform:translateY(-2px)}
-.layer-node.active{border-color:var(--green-dark);box-shadow:0 10px 28px rgba(0,61,31,.18);transform:translateY(-3px)}
-.layer-node.active::after{content:'';position:absolute;inset:-4px;border-radius:13px;border:1.5px solid var(--green-dark);pointer-events:none;opacity:.25}
-.layer-icon{width:26px;height:26px;fill:none;stroke:currentColor;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.layer-node-tag{font-size:.54rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;padding:2px 7px;border-radius:4px;color:#fff;line-height:1.5}
-.layer-node[data-stage="ingest"]{color:#8B6F2D}
-.layer-node[data-stage="ingest"] .layer-node-tag{background:#B8923E}
-.layer-node[data-stage="clean"]{color:#6E7C8E}
-.layer-node[data-stage="clean"] .layer-node-tag{background:#98A6B6}
-.layer-node[data-stage="harmonize"]{color:#B08727}
-.layer-node[data-stage="harmonize"] .layer-node-tag{background:#D4A538}
-.layer-node[data-stage="serve"]{color:var(--green-dark)}
-.layer-node[data-stage="serve"] .layer-node-tag{background:var(--green-dark)}
-.layer-node-name{font-size:.84rem;font-weight:700;color:var(--ink);line-height:1.2}
-.flow-connector{width:100%;max-width:32px;height:22px;align-self:center;color:var(--green-mid);fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;justify-self:center}
+/* Tier dimming */
+.arch-v2[data-active-tier="1"] .svg-node[data-min-tier="2"],
+.arch-v2[data-active-tier="1"] .svg-node[data-min-tier="3"],
+.arch-v2[data-active-tier="1"] .svg-flow[data-min-tier="2"],
+.arch-v2[data-active-tier="1"] .svg-flow[data-min-tier="3"]{opacity:.15}
+.arch-v2[data-active-tier="2"] .svg-node[data-min-tier="3"],
+.arch-v2[data-active-tier="2"] .svg-flow[data-min-tier="3"]{opacity:.15}
 
-/* BU multi-marker (tier 3 only) */
-.bu-marker{margin-top:12px;display:none;justify-content:center;gap:8px;align-items:center;font-size:.64rem;font-weight:700;color:var(--green-dark);text-transform:uppercase;letter-spacing:.08em;padding:8px 12px;background:rgba(39,103,73,.08);border:1px dashed var(--green-mid);border-radius:8px}
-.bu-marker-icon{display:inline-grid;grid-template-columns:repeat(3,6px);gap:2px}
-.bu-marker-icon span{width:6px;height:6px;background:var(--green-mid);border-radius:1px}
-.arch-v2[data-active-tier="3"] .bu-marker{display:inline-flex}
+/* Flowing data stream animation */
+.svg-flow-path{fill:none;stroke:#3A8A5F;stroke-width:1.8;stroke-dasharray:4 8;stroke-linecap:round;animation:flowDash 2.8s linear infinite;opacity:.75}
+@keyframes flowDash{to{stroke-dashoffset:-24}}
+.svg-flow-stream{fill:none;stroke-linecap:round}
 
-/* Master data spine */
-.arch-md-wrap{margin-top:16px;position:relative;z-index:1}
-.md-connectors{display:grid;grid-template-columns:repeat(4,1fr);height:18px;pointer-events:none;padding:0 2px}
-.md-connector{display:flex;justify-content:center;position:relative}
-.md-connector::before{content:'';width:2px;background:repeating-linear-gradient(to bottom,var(--green-mid) 0,var(--green-mid) 3px,transparent 3px,transparent 6px);height:100%;opacity:.6}
-.md-connector::after{content:'';position:absolute;top:0;width:0;height:0;border-left:4px solid transparent;border-right:4px solid transparent;border-bottom:5px solid var(--green-mid);opacity:.7}
-.md-box{background:linear-gradient(135deg,var(--green-dark),var(--green-mid));color:#fff;border-radius:12px;padding:20px 26px;display:flex;gap:18px;align-items:center;box-shadow:0 10px 32px rgba(0,61,31,.22);position:relative}
-.md-icon-wrap{width:48px;height:48px;border-radius:12px;background:rgba(255,255,255,.15);display:grid;place-items:center;flex-shrink:0}
-.md-icon-wrap svg{width:26px;height:26px;fill:none;stroke:#fff;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.md-body{flex:1}
-.md-title{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;margin-bottom:3px;color:rgba(255,255,255,.95)}
-.md-text{font-size:.82rem;color:rgba(255,255,255,.82);line-height:1.5}
+/* Pulsing data particle */
+.flow-particle{fill:#10A37F;filter:drop-shadow(0 0 3px rgba(16,163,127,.7))}
+
+/* Master data core */
+.md-core-outer{transform-box:fill-box;transform-origin:center;animation:corePulse 3.2s ease-in-out infinite}
+@keyframes corePulse{0%,100%{opacity:.35;transform:scale(1)}50%{opacity:.6;transform:scale(1.12)}}
+.md-core-middle{transform-box:fill-box;transform-origin:center;animation:corePulseMid 3.2s ease-in-out infinite}
+@keyframes corePulseMid{0%,100%{opacity:.55;transform:scale(1)}50%{opacity:.8;transform:scale(1.06)}}
+.md-beam{opacity:.55;transition:opacity .5s}
+.md-beam-pulse{animation:beamPulse 2.5s ease-in-out infinite}
+@keyframes beamPulse{0%,100%{opacity:.35}50%{opacity:.8}}
+
+/* BU aggregation marker */
+.svg-bu-marker{opacity:0;transition:opacity .5s ease}
+.arch-v2[data-active-tier="3"] .svg-bu-marker{opacity:1}
+
+/* Stage badge color highlighting active */
+.svg-stage-face{transition:filter .4s ease}
+.svg-stage.active .svg-stage-face{filter:brightness(1.08) drop-shadow(0 8px 20px rgba(0,61,31,.3))}
 
 /* Detail panel */
 .arch-detail{margin-top:20px;background:var(--green-faint);border:1px solid var(--line-l);border-radius:12px;padding:22px 26px;position:relative;z-index:1}
@@ -318,19 +315,10 @@ p{color:var(--muted)}
 .detail-item-label{font-size:.58rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--green-mid);margin-bottom:5px}
 .detail-item-text{font-size:.8rem;color:var(--ink);line-height:1.55}
 
-/* Tier dimming */
-.arch-v2[data-active-tier="1"] .node[data-min-tier="2"],
-.arch-v2[data-active-tier="1"] .node[data-min-tier="3"]{opacity:.22;filter:grayscale(.7)}
-.arch-v2[data-active-tier="2"] .node[data-min-tier="3"]{opacity:.22;filter:grayscale(.7)}
-
 /* Responsive */
-@media(max-width:1050px){
-  .arch-canvas{grid-template-columns:1fr;gap:20px}
-  .arch-region{min-width:0}
-  .region-items{flex-direction:row;flex-wrap:wrap;justify-content:center;gap:6px}
-  .pipeline-flow{grid-template-columns:repeat(4,1fr);gap:6px}
-  .flow-connector{display:none}
-  .md-connectors{display:none}
+@media(max-width:900px){
+  .arch-scene-wrap{padding:8px;overflow-x:auto}
+  .arch-scene{min-width:820px}
   .detail-grid{grid-template-columns:1fr;gap:14px}
   .stage-bar{grid-template-columns:repeat(2,1fr);gap:8px}
   .stage-arrow{display:none}
@@ -832,81 +820,347 @@ p{color:var(--muted)}
         <button class="stage-pill" type="button" data-stage="serve"><span class="stage-pill-num">04</span><span class="stage-pill-name">Serve</span><span class="stage-pill-sub">Consumption</span></button>
       </div>
 
-      <!-- Canvas: sources · pipeline · consumers -->
-      <div class="arch-canvas">
-        <div class="arch-region arch-sources">
-          <div class="region-label">Data sources</div>
-          <div class="region-items">
-            <div class="node source-node" data-min-tier="1"><svg class="node-icon" viewBox="0 0 20 20"><ellipse cx="10" cy="4" rx="7" ry="2"/><path d="M3 4v12c0 1.2 3.1 2 7 2s7-.8 7-2V4"/><path d="M3 10c0 1.2 3.1 2 7 2s7-.8 7-2"/></svg><span>Nielsen</span></div>
-            <div class="node source-node" data-min-tier="1"><svg class="node-icon" viewBox="0 0 20 20"><ellipse cx="10" cy="4" rx="7" ry="2"/><path d="M3 4v12c0 1.2 3.1 2 7 2s7-.8 7-2V4"/><path d="M3 10c0 1.2 3.1 2 7 2s7-.8 7-2"/></svg><span>SAP</span></div>
-            <div class="node source-node" data-min-tier="2"><svg class="node-icon" viewBox="0 0 20 20"><ellipse cx="10" cy="4" rx="7" ry="2"/><path d="M3 4v12c0 1.2 3.1 2 7 2s7-.8 7-2V4"/><path d="M3 10c0 1.2 3.1 2 7 2s7-.8 7-2"/></svg><span>POS</span></div>
-            <div class="node source-node" data-min-tier="2"><svg class="node-icon" viewBox="0 0 20 20"><ellipse cx="10" cy="4" rx="7" ry="2"/><path d="M3 4v12c0 1.2 3.1 2 7 2s7-.8 7-2V4"/><path d="M3 10c0 1.2 3.1 2 7 2s7-.8 7-2"/></svg><span>TPM</span></div>
-            <div class="node source-node" data-min-tier="3"><svg class="node-icon" viewBox="0 0 20 20"><ellipse cx="10" cy="4" rx="7" ry="2"/><path d="M3 4v12c0 1.2 3.1 2 7 2s7-.8 7-2V4"/><path d="M3 10c0 1.2 3.1 2 7 2s7-.8 7-2"/></svg><span>Distributor</span></div>
-          </div>
-        </div>
+      <!-- SVG scene -->
+      <div class="arch-scene-wrap">
+        <svg class="arch-scene" viewBox="0 0 1200 720" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Interactive architecture diagram">
+          <defs>
+            <!-- Stage gradients (medallion metals) -->
+            <linearGradient id="gBronze" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#E8B570"/>
+              <stop offset="1" stop-color="#B8782E"/>
+            </linearGradient>
+            <linearGradient id="gSilver" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#DDE1E7"/>
+              <stop offset="1" stop-color="#99A2B0"/>
+            </linearGradient>
+            <linearGradient id="gGold" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#F0C850"/>
+              <stop offset="1" stop-color="#C58E15"/>
+            </linearGradient>
+            <linearGradient id="gServe" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#3A8A5F"/>
+              <stop offset="1" stop-color="#003D1F"/>
+            </linearGradient>
+            <!-- Card / node gradients -->
+            <linearGradient id="gCard" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FFFFFF"/>
+              <stop offset="1" stop-color="#F5F9EC"/>
+            </linearGradient>
+            <linearGradient id="gPlatformBg" x1="0" y1="0" x2="0" y2="1">
+              <stop offset="0" stop-color="#FFFFFF" stop-opacity=".92"/>
+              <stop offset="1" stop-color="#F0F6E2" stop-opacity=".92"/>
+            </linearGradient>
+            <!-- Master data core radial -->
+            <radialGradient id="gMdCore" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#10A37F"/>
+              <stop offset="0.55" stop-color="#0D7C66"/>
+              <stop offset="1" stop-color="#003D1F"/>
+            </radialGradient>
+            <radialGradient id="gMdGlow" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#10A37F" stop-opacity=".7"/>
+              <stop offset="1" stop-color="#10A37F" stop-opacity="0"/>
+            </radialGradient>
+            <!-- Beam gradient (vertical) -->
+            <linearGradient id="gBeam" x1="0" y1="1" x2="0" y2="0">
+              <stop offset="0" stop-color="#10A37F" stop-opacity=".9"/>
+              <stop offset="1" stop-color="#10A37F" stop-opacity="0"/>
+            </linearGradient>
+            <!-- Shadow filter -->
+            <filter id="fShadow" x="-50%" y="-50%" width="200%" height="200%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="3"/>
+              <feOffset dx="0" dy="3" result="o"/>
+              <feComponentTransfer><feFuncA type="linear" slope=".22"/></feComponentTransfer>
+              <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <filter id="fSoftGlow" x="-100%" y="-100%" width="300%" height="300%">
+              <feGaussianBlur stdDeviation="8"/>
+            </filter>
+            <filter id="fStrongShadow" x="-100%" y="-100%" width="300%" height="300%">
+              <feGaussianBlur in="SourceAlpha" stdDeviation="8"/>
+              <feOffset dx="0" dy="10" result="o"/>
+              <feComponentTransfer><feFuncA type="linear" slope=".25"/></feComponentTransfer>
+              <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+            </filter>
+            <!-- Dot pattern background -->
+            <pattern id="pDots" x="0" y="0" width="28" height="28" patternUnits="userSpaceOnUse">
+              <circle cx="14" cy="14" r="1.1" fill="#A8BE82" opacity=".35"/>
+            </pattern>
+            <!-- Flow particle -->
+            <radialGradient id="gParticle" cx="50%" cy="50%" r="50%">
+              <stop offset="0" stop-color="#10A37F"/>
+              <stop offset="1" stop-color="#10A37F" stop-opacity="0"/>
+            </radialGradient>
+          </defs>
 
-        <div class="arch-region arch-pipeline">
-          <div class="region-label">Medallion pipeline</div>
-          <div class="pipeline-flow">
-            <div class="layer-node" data-stage="ingest">
-              <div class="layer-node-tag">Bronze</div>
-              <svg class="layer-icon" viewBox="0 0 24 24"><path d="M3 5h18l-7 9v6l-4-2v-4z"/></svg>
-              <div class="layer-node-name">Ingest</div>
-            </div>
-            <svg class="flow-connector" viewBox="0 0 32 22"><path d="M2 11h24m-5-5 5 5-5 5"/></svg>
-            <div class="layer-node" data-stage="clean">
-              <div class="layer-node-tag">Silver</div>
-              <svg class="layer-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M8 12l3 3 5-6"/></svg>
-              <div class="layer-node-name">Clean</div>
-            </div>
-            <svg class="flow-connector" viewBox="0 0 32 22"><path d="M2 11h24m-5-5 5 5-5 5"/></svg>
-            <div class="layer-node" data-stage="harmonize">
-              <div class="layer-node-tag">Gold</div>
-              <svg class="layer-icon" viewBox="0 0 24 24"><rect x="3" y="4" width="18" height="16" rx="2"/><path d="M3 10h18M3 16h18M9 4v16M15 4v16"/></svg>
-              <div class="layer-node-name">Harmonize</div>
-            </div>
-            <svg class="flow-connector" viewBox="0 0 32 22"><path d="M2 11h24m-5-5 5 5-5 5"/></svg>
-            <div class="layer-node" data-stage="serve">
-              <div class="layer-node-tag">Serve</div>
-              <svg class="layer-icon" viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><path d="M7 17v-4M11 17v-7M15 17v-3M19 17v-6"/></svg>
-              <div class="layer-node-name">Serve</div>
-            </div>
-          </div>
-          <div class="bu-marker" aria-label="Multi-BU aggregation">
-            <span class="bu-marker-icon"><span></span><span></span><span></span><span></span><span></span><span></span></span>
-            Multi-BU aggregation · shared master data across BUs
-          </div>
-        </div>
+          <!-- Background: dot pattern + ambient glow -->
+          <rect width="1200" height="720" fill="url(#pDots)"/>
+          <ellipse cx="600" cy="330" rx="560" ry="220" fill="url(#gMdGlow)" opacity=".12"/>
 
-        <div class="arch-region arch-consumers">
-          <div class="region-label">Consumers</div>
-          <div class="region-items">
-            <div class="node consumer-node" data-min-tier="1"><svg class="node-icon" viewBox="0 0 20 20"><path d="M3 17V9M8 17V5M13 17V11M18 17V7"/></svg><span>Power BI</span></div>
-            <div class="node consumer-node" data-min-tier="1"><svg class="node-icon" viewBox="0 0 20 20"><path d="M4 2h9l4 4v12H4z"/><path d="M13 2v4h4M7 11h6M7 14h5"/></svg><span>Executive packs</span></div>
-            <div class="node consumer-node" data-min-tier="2"><svg class="node-icon" viewBox="0 0 20 20"><path d="M3 4h14v9H7l-4 4z"/><path d="M6 8h8M6 11h5"/></svg><span>Chat analytics</span></div>
-            <div class="node consumer-node" data-min-tier="2"><svg class="node-icon" viewBox="0 0 20 20"><rect x="2" y="3" width="16" height="11" rx="1"/><path d="M10 14v3M6 17h8M5 10l3-3 3 3 4-4"/></svg><span>ThinkCell decks</span></div>
-            <div class="node consumer-node" data-min-tier="3"><svg class="node-icon" viewBox="0 0 20 20"><path d="M8 4L4 10l4 6M12 4l4 6-4 6"/></svg><span>APIs</span></div>
-          </div>
-        </div>
-      </div>
+          <!-- Ambient floating accent dots -->
+          <g opacity=".4">
+            <circle cx="120" cy="480" r="3" fill="#3A8A5F"/>
+            <circle cx="1070" cy="460" r="2.5" fill="#3A8A5F"/>
+            <circle cx="90" cy="560" r="2" fill="#10A37F"/>
+            <circle cx="1130" cy="530" r="2" fill="#10A37F"/>
+          </g>
 
-      <!-- Master data spine -->
-      <div class="arch-md-wrap">
-        <div class="md-connectors" aria-hidden="true">
-          <div class="md-connector"></div>
-          <div class="md-connector"></div>
-          <div class="md-connector"></div>
-          <div class="md-connector"></div>
-        </div>
-        <div class="md-box">
-          <div class="md-icon-wrap">
-            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><circle cx="4" cy="5" r="2"/><circle cx="4" cy="19" r="2"/><circle cx="20" cy="5" r="2"/><circle cx="20" cy="19" r="2"/><path d="M6 6l4 4M6 18l4-4M18 6l-4 4M18 18l-4-4"/></svg>
-          </div>
-          <div class="md-body">
-            <div class="md-title">Master Data · Eddy</div>
-            <div class="md-text">Product and customer definitions feed every layer. A mapping change flows consistently from raw through consumption — so the business review deck, the executive pack, and the chat answer all agree.</div>
-          </div>
-        </div>
+          <!-- FLOW PATHS: sources → pipeline entry (converging) -->
+          <g class="flow-paths-in" fill="none">
+            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 220,110 C 265,110 265,280 310,280"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 220,190 C 265,190 265,280 310,280"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 220,270 Q 265,275 310,280"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 220,350 C 265,350 265,280 310,280"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="3" d="M 220,430 C 265,430 265,280 310,280"/>
+          </g>
+
+          <!-- FLOW PATHS: pipeline exit → consumers (diverging) -->
+          <g class="flow-paths-out" fill="none">
+            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 890,280 C 935,280 935,110 980,110"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 890,280 C 935,280 935,190 980,190"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 890,280 Q 935,275 980,270"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 890,280 C 935,280 935,350 980,350"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="3" d="M 890,280 C 935,280 935,430 980,430"/>
+          </g>
+
+          <!-- PIPELINE PLATFORM (background card under the 4 stages) -->
+          <g class="pipeline-platform">
+            <rect x="300" y="160" width="600" height="240" rx="24" fill="url(#gPlatformBg)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
+            <text x="600" y="186" text-anchor="middle" fill="#8A9A8E" font-size="10" font-weight="700" letter-spacing="2" font-family="Segoe UI,sans-serif">MEDALLION PIPELINE · DATABRICKS</text>
+            <!-- Subtle top accent -->
+            <rect x="324" y="160" width="552" height="3" rx="1.5" fill="url(#gServe)" opacity=".5"/>
+          </g>
+
+          <!-- PIPELINE FLOW between stages (short curves with particles) -->
+          <g class="pipeline-inner-flow" fill="none">
+            <path class="svg-flow-path" d="M 420,280 Q 435,280 450,280"/>
+            <path class="svg-flow-path" d="M 570,280 Q 585,280 600,280"/>
+            <path class="svg-flow-path" d="M 720,280 Q 735,280 750,280"/>
+          </g>
+
+          <!-- PIPELINE STAGES (clickable) -->
+          <g class="pipeline-stages">
+
+            <!-- Stage 1: Bronze / Ingest -->
+            <g class="svg-stage" data-stage="ingest">
+              <ellipse class="svg-stage-glow" cx="360" cy="360" rx="68" ry="8" fill="#B8782E" opacity=".5"/>
+              <rect class="svg-stage-ring" x="302" y="202" width="116" height="156" rx="18" fill="none" stroke="#003D1F" stroke-width="2" stroke-dasharray="4 4"/>
+              <rect class="svg-stage-face" x="310" y="210" width="100" height="140" rx="14" fill="url(#gBronze)" filter="url(#fShadow)"/>
+              <!-- Tag -->
+              <rect x="326" y="222" width="68" height="16" rx="4" fill="rgba(0,0,0,.22)"/>
+              <text x="360" y="234" text-anchor="middle" fill="#fff" font-size="9" font-weight="800" letter-spacing="1.2">BRONZE</text>
+              <!-- Icon: funnel -->
+              <g transform="translate(360,272)" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M -18,-12 L 18,-12 L 6,4 L 6,20 L -6,20 L -6,4 Z"/>
+              </g>
+              <text x="360" y="324" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif">Ingest</text>
+              <text x="360" y="340" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="8" font-weight="600" letter-spacing=".8">Stage 01</text>
+            </g>
+
+            <!-- Stage 2: Silver / Clean -->
+            <g class="svg-stage" data-stage="clean">
+              <ellipse class="svg-stage-glow" cx="510" cy="360" rx="68" ry="8" fill="#99A2B0" opacity=".5"/>
+              <rect class="svg-stage-ring" x="452" y="202" width="116" height="156" rx="18" fill="none" stroke="#003D1F" stroke-width="2" stroke-dasharray="4 4"/>
+              <rect class="svg-stage-face" x="460" y="210" width="100" height="140" rx="14" fill="url(#gSilver)" filter="url(#fShadow)"/>
+              <rect x="476" y="222" width="68" height="16" rx="4" fill="rgba(0,0,0,.22)"/>
+              <text x="510" y="234" text-anchor="middle" fill="#fff" font-size="9" font-weight="800" letter-spacing="1.2">SILVER</text>
+              <!-- Icon: sparkle/check shield -->
+              <g transform="translate(510,272)" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M 0,-16 L 14,-10 L 14,4 C 14,14 6,20 0,22 C -6,20 -14,14 -14,4 L -14,-10 Z"/>
+                <path d="M -6,4 L -2,9 L 7,-3"/>
+              </g>
+              <text x="510" y="324" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif">Clean</text>
+              <text x="510" y="340" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="8" font-weight="600" letter-spacing=".8">Stage 02</text>
+            </g>
+
+            <!-- Stage 3: Gold / Harmonize -->
+            <g class="svg-stage" data-stage="harmonize">
+              <ellipse class="svg-stage-glow" cx="660" cy="360" rx="68" ry="8" fill="#C58E15" opacity=".5"/>
+              <rect class="svg-stage-ring" x="602" y="202" width="116" height="156" rx="18" fill="none" stroke="#003D1F" stroke-width="2" stroke-dasharray="4 4"/>
+              <rect class="svg-stage-face" x="610" y="210" width="100" height="140" rx="14" fill="url(#gGold)" filter="url(#fShadow)"/>
+              <rect x="626" y="222" width="68" height="16" rx="4" fill="rgba(0,0,0,.22)"/>
+              <text x="660" y="234" text-anchor="middle" fill="#fff" font-size="9" font-weight="800" letter-spacing="1.2">GOLD</text>
+              <!-- Icon: interlocking rings -->
+              <g transform="translate(660,272)" fill="none" stroke="#fff" stroke-width="2.5">
+                <circle cx="-7" cy="0" r="10"/>
+                <circle cx="7" cy="0" r="10"/>
+              </g>
+              <text x="660" y="324" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif">Harmonize</text>
+              <text x="660" y="340" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="8" font-weight="600" letter-spacing=".8">Stage 03</text>
+            </g>
+
+            <!-- Stage 4: Serve -->
+            <g class="svg-stage" data-stage="serve">
+              <ellipse class="svg-stage-glow" cx="810" cy="360" rx="68" ry="8" fill="#003D1F" opacity=".55"/>
+              <rect class="svg-stage-ring" x="752" y="202" width="116" height="156" rx="18" fill="none" stroke="#003D1F" stroke-width="2" stroke-dasharray="4 4"/>
+              <rect class="svg-stage-face" x="760" y="210" width="100" height="140" rx="14" fill="url(#gServe)" filter="url(#fShadow)"/>
+              <rect x="776" y="222" width="68" height="16" rx="4" fill="rgba(255,255,255,.2)"/>
+              <text x="810" y="234" text-anchor="middle" fill="#fff" font-size="9" font-weight="800" letter-spacing="1.2">SERVE</text>
+              <!-- Icon: bar chart / monitor -->
+              <g transform="translate(810,272)" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="-16" y="-14" width="32" height="22" rx="2"/>
+                <path d="M -9,4 L -9,-2 M -3,4 L -3,-7 M 3,4 L 3,-10 M 9,4 L 9,-5"/>
+                <path d="M -6,14 L 6,14 M 0,8 L 0,14"/>
+              </g>
+              <text x="810" y="324" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif">Serve</text>
+              <text x="810" y="340" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="8" font-weight="600" letter-spacing=".8">Stage 04</text>
+            </g>
+          </g>
+
+          <!-- MULTI-BU AGGREGATION marker (tier 3 only) -->
+          <g class="svg-bu-marker" transform="translate(600,430)">
+            <rect x="-180" y="-16" width="360" height="32" rx="16" fill="rgba(39,103,73,.12)" stroke="#276749" stroke-width="1.4" stroke-dasharray="4 4"/>
+            <g transform="translate(-160,0)" fill="#276749">
+              <rect x="-3" y="-6" width="4" height="4" rx=".5"/><rect x="3" y="-6" width="4" height="4" rx=".5"/><rect x="9" y="-6" width="4" height="4" rx=".5"/>
+              <rect x="-3" y="0" width="4" height="4" rx=".5"/><rect x="3" y="0" width="4" height="4" rx=".5"/><rect x="9" y="0" width="4" height="4" rx=".5"/>
+            </g>
+            <text x="10" y="4" text-anchor="middle" fill="#003D1F" font-size="10" font-weight="700" letter-spacing="1.3" font-family="Segoe UI,sans-serif">MULTI-BU AGGREGATION · SHARED MASTER DATA ACROSS BUS</text>
+          </g>
+
+          <!-- BEAMS from master data core to each stage -->
+          <g class="md-beams">
+            <path class="md-beam md-beam-pulse" d="M 578,560 L 360,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path class="md-beam md-beam-pulse" d="M 592,560 L 510,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none" style="animation-delay:.3s"/>
+            <path class="md-beam md-beam-pulse" d="M 608,560 L 660,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none" style="animation-delay:.6s"/>
+            <path class="md-beam md-beam-pulse" d="M 622,560 L 810,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none" style="animation-delay:.9s"/>
+          </g>
+
+          <!-- MASTER DATA CORE -->
+          <g class="md-core" transform="translate(600,595)">
+            <!-- Outer pulsing halo -->
+            <circle class="md-core-outer" r="95" fill="url(#gMdGlow)"/>
+            <!-- Middle pulsing glow -->
+            <circle class="md-core-middle" r="72" fill="#10A37F" opacity=".28" filter="url(#fSoftGlow)"/>
+            <!-- Main hexagon -->
+            <polygon points="-62,-36 0,-72 62,-36 62,36 0,72 -62,36" fill="url(#gMdCore)" filter="url(#fStrongShadow)"/>
+            <!-- Inner highlight stroke -->
+            <polygon points="-52,-30 0,-60 52,-30 52,30 0,60 -52,30" fill="none" stroke="rgba(255,255,255,.35)" stroke-width="1.2"/>
+            <!-- Network icon -->
+            <g transform="translate(0,-8)" fill="none" stroke="#fff" stroke-width="1.8" stroke-linecap="round">
+              <circle cx="0" cy="0" r="5" fill="#fff"/>
+              <circle cx="-22" cy="-15" r="3.5" fill="#fff"/>
+              <circle cx="22" cy="-15" r="3.5" fill="#fff"/>
+              <circle cx="-22" cy="15" r="3.5" fill="#fff"/>
+              <circle cx="22" cy="15" r="3.5" fill="#fff"/>
+              <line x1="-4" y1="-3" x2="-20" y2="-14"/>
+              <line x1="4" y1="-3" x2="20" y2="-14"/>
+              <line x1="-4" y1="3" x2="-20" y2="14"/>
+              <line x1="4" y1="3" x2="20" y2="14"/>
+            </g>
+            <text x="0" y="34" text-anchor="middle" fill="#fff" font-size="14" font-weight="800" letter-spacing="2" font-family="Segoe UI,sans-serif">EDDY</text>
+            <text x="0" y="50" text-anchor="middle" fill="rgba(255,255,255,.75)" font-size="8" font-weight="600" letter-spacing="1.5" font-family="Segoe UI,sans-serif">MASTER DATA</text>
+          </g>
+
+          <!-- SOURCE CARDS -->
+          <g class="sources">
+            <!-- Region label -->
+            <text x="115" y="60" text-anchor="middle" fill="#8A9A8E" font-size="10" font-weight="700" letter-spacing="2" font-family="Segoe UI,sans-serif">DATA SOURCES</text>
+
+            <g class="svg-node" data-min-tier="1">
+              <rect x="30" y="85" width="190" height="52" rx="11" fill="url(#gCard)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
+              <g transform="translate(55,111)" fill="#276749">
+                <ellipse cx="0" cy="-7" rx="10" ry="3"/>
+                <path d="M -10,-7 V 6 C -10,8 -5,9.5 0,9.5 C 5,9.5 10,8 10,6 V -7 Z" opacity=".9"/>
+                <ellipse cx="0" cy="-7" rx="10" ry="3" fill="#10A37F"/>
+              </g>
+              <text x="82" y="116" fill="#1A2E20" font-size="13" font-weight="700" font-family="Segoe UI,sans-serif">Nielsen</text>
+              <text x="82" y="128" fill="#8A9A8E" font-size="9" font-weight="500" font-family="Segoe UI,sans-serif">Market data</text>
+            </g>
+            <g class="svg-node" data-min-tier="1">
+              <rect x="30" y="165" width="190" height="52" rx="11" fill="url(#gCard)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
+              <g transform="translate(55,191)" fill="#276749">
+                <ellipse cx="0" cy="-7" rx="10" ry="3"/>
+                <path d="M -10,-7 V 6 C -10,8 -5,9.5 0,9.5 C 5,9.5 10,8 10,6 V -7 Z" opacity=".9"/>
+                <ellipse cx="0" cy="-7" rx="10" ry="3" fill="#10A37F"/>
+              </g>
+              <text x="82" y="196" fill="#1A2E20" font-size="13" font-weight="700" font-family="Segoe UI,sans-serif">SAP</text>
+              <text x="82" y="208" fill="#8A9A8E" font-size="9" font-weight="500" font-family="Segoe UI,sans-serif">Internal sales</text>
+            </g>
+            <g class="svg-node" data-min-tier="2">
+              <rect x="30" y="245" width="190" height="52" rx="11" fill="url(#gCard)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
+              <g transform="translate(55,271)" fill="#276749">
+                <ellipse cx="0" cy="-7" rx="10" ry="3"/>
+                <path d="M -10,-7 V 6 C -10,8 -5,9.5 0,9.5 C 5,9.5 10,8 10,6 V -7 Z" opacity=".9"/>
+                <ellipse cx="0" cy="-7" rx="10" ry="3" fill="#10A37F"/>
+              </g>
+              <text x="82" y="276" fill="#1A2E20" font-size="13" font-weight="700" font-family="Segoe UI,sans-serif">POS</text>
+              <text x="82" y="288" fill="#8A9A8E" font-size="9" font-weight="500" font-family="Segoe UI,sans-serif">Retailer sell-out</text>
+            </g>
+            <g class="svg-node" data-min-tier="2">
+              <rect x="30" y="325" width="190" height="52" rx="11" fill="url(#gCard)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
+              <g transform="translate(55,351)" fill="#276749">
+                <ellipse cx="0" cy="-7" rx="10" ry="3"/>
+                <path d="M -10,-7 V 6 C -10,8 -5,9.5 0,9.5 C 5,9.5 10,8 10,6 V -7 Z" opacity=".9"/>
+                <ellipse cx="0" cy="-7" rx="10" ry="3" fill="#10A37F"/>
+              </g>
+              <text x="82" y="356" fill="#1A2E20" font-size="13" font-weight="700" font-family="Segoe UI,sans-serif">TPM</text>
+              <text x="82" y="368" fill="#8A9A8E" font-size="9" font-weight="500" font-family="Segoe UI,sans-serif">Trade promo</text>
+            </g>
+            <g class="svg-node" data-min-tier="3">
+              <rect x="30" y="405" width="190" height="52" rx="11" fill="url(#gCard)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
+              <g transform="translate(55,431)" fill="#276749">
+                <ellipse cx="0" cy="-7" rx="10" ry="3"/>
+                <path d="M -10,-7 V 6 C -10,8 -5,9.5 0,9.5 C 5,9.5 10,8 10,6 V -7 Z" opacity=".9"/>
+                <ellipse cx="0" cy="-7" rx="10" ry="3" fill="#10A37F"/>
+              </g>
+              <text x="82" y="436" fill="#1A2E20" font-size="13" font-weight="700" font-family="Segoe UI,sans-serif">Distributor</text>
+              <text x="82" y="448" fill="#8A9A8E" font-size="9" font-weight="500" font-family="Segoe UI,sans-serif">Channel data</text>
+            </g>
+          </g>
+
+          <!-- CONSUMER CARDS -->
+          <g class="consumers">
+            <text x="1085" y="60" text-anchor="middle" fill="#8A9A8E" font-size="10" font-weight="700" letter-spacing="2" font-family="Segoe UI,sans-serif">CONSUMERS</text>
+
+            <g class="svg-node" data-min-tier="1">
+              <rect x="980" y="85" width="190" height="52" rx="11" fill="url(#gCard)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
+              <g transform="translate(1005,111)" fill="none" stroke="#276749" stroke-width="2.2" stroke-linecap="round">
+                <path d="M -9,6 V -3"/><path d="M -3,6 V -7"/><path d="M 3,6 V -10"/><path d="M 9,6 V -6"/>
+              </g>
+              <text x="1032" y="116" fill="#1A2E20" font-size="13" font-weight="700" font-family="Segoe UI,sans-serif">Power BI</text>
+              <text x="1032" y="128" fill="#8A9A8E" font-size="9" font-weight="500" font-family="Segoe UI,sans-serif">Dashboards</text>
+            </g>
+            <g class="svg-node" data-min-tier="1">
+              <rect x="980" y="165" width="190" height="52" rx="11" fill="url(#gCard)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
+              <g transform="translate(1005,191)" fill="none" stroke="#276749" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M -9,-10 L 5,-10 L 9,-6 L 9,10 L -9,10 Z"/>
+                <path d="M 5,-10 L 5,-6 L 9,-6"/>
+                <path d="M -5,-2 L 5,-2 M -5,2 L 3,2"/>
+              </g>
+              <text x="1032" y="196" fill="#1A2E20" font-size="13" font-weight="700" font-family="Segoe UI,sans-serif">Exec packs</text>
+              <text x="1032" y="208" fill="#8A9A8E" font-size="9" font-weight="500" font-family="Segoe UI,sans-serif">Auto-distributed</text>
+            </g>
+            <g class="svg-node" data-min-tier="2">
+              <rect x="980" y="245" width="190" height="52" rx="11" fill="url(#gCard)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
+              <g transform="translate(1005,271)" fill="none" stroke="#276749" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M -11,-8 L 10,-8 L 10,4 L -1,4 L -7,10 L -7,4 L -11,4 Z"/>
+                <path d="M -6,-3 L 5,-3 M -6,0 L 2,0"/>
+              </g>
+              <text x="1032" y="276" fill="#1A2E20" font-size="13" font-weight="700" font-family="Segoe UI,sans-serif">Chat analytics</text>
+              <text x="1032" y="288" fill="#8A9A8E" font-size="9" font-weight="500" font-family="Segoe UI,sans-serif">Natural-language</text>
+            </g>
+            <g class="svg-node" data-min-tier="2">
+              <rect x="980" y="325" width="190" height="52" rx="11" fill="url(#gCard)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
+              <g transform="translate(1005,351)" fill="none" stroke="#276749" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="-11" y="-9" width="22" height="14" rx="1"/>
+                <path d="M -7,-2 L -3,-5 L 0,-3 L 5,-8"/>
+                <path d="M -4,9 L 4,9 M 0,5 L 0,9"/>
+              </g>
+              <text x="1032" y="356" fill="#1A2E20" font-size="13" font-weight="700" font-family="Segoe UI,sans-serif">ThinkCell</text>
+              <text x="1032" y="368" fill="#8A9A8E" font-size="9" font-weight="500" font-family="Segoe UI,sans-serif">Auto-populated</text>
+            </g>
+            <g class="svg-node" data-min-tier="3">
+              <rect x="980" y="405" width="190" height="52" rx="11" fill="url(#gCard)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
+              <g transform="translate(1005,431)" fill="none" stroke="#276749" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M -8,-8 L -12,0 L -8,8"/>
+                <path d="M 8,-8 L 12,0 L 8,8"/>
+                <path d="M -2,-8 L 2,8"/>
+              </g>
+              <text x="1032" y="436" fill="#1A2E20" font-size="13" font-weight="700" font-family="Segoe UI,sans-serif">APIs</text>
+              <text x="1032" y="448" fill="#8A9A8E" font-size="9" font-weight="500" font-family="Segoe UI,sans-serif">Downstream apps</text>
+            </g>
+          </g>
+
+        </svg>
       </div>
 
       <!-- Dynamic detail panel -->
@@ -1089,14 +1343,14 @@ document.querySelectorAll('section[id]').forEach(s=>navObs.observe(s));
       tierBtns.forEach(b => b.classList.toggle('active', b === btn));
     });
   });
-  // Stage selector — updates pills, layer nodes, and detail panels
+  // Stage selector — updates pills, SVG stage nodes, and detail panels
   const setStage = (stage) => {
     arch.querySelectorAll('.stage-pill').forEach(p => p.classList.toggle('active', p.dataset.stage === stage));
-    arch.querySelectorAll('.layer-node').forEach(l => l.classList.toggle('active', l.dataset.stage === stage));
+    arch.querySelectorAll('.svg-stage').forEach(l => l.classList.toggle('active', l.dataset.stage === stage));
     arch.querySelectorAll('.detail-panel').forEach(d => d.classList.toggle('active', d.dataset.stage === stage));
   };
   arch.querySelectorAll('.stage-pill').forEach(p => p.addEventListener('click', () => setStage(p.dataset.stage)));
-  arch.querySelectorAll('.layer-node').forEach(l => l.addEventListener('click', () => setStage(l.dataset.stage)));
+  arch.querySelectorAll('.svg-stage').forEach(l => l.addEventListener('click', () => setStage(l.dataset.stage)));
   // Initialize: Ingest layer active by default
   setStage('ingest');
 })();
