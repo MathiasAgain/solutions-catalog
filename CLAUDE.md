@@ -1,4 +1,4 @@
-# Orkla Data & Analytics — Solutions Catalog
+# Orkla Data & Analytics - Solutions Catalog
 
 ## What This Is
 Customer-facing microsite for an internal Orkla team offering **data & analytics solutions** to portfolio companies and business units. The flagship offering unifies fragmented commercial data into trusted, decision-ready views. Deployed via GitHub Pages.
@@ -8,9 +8,9 @@ Customer-facing microsite for an internal Orkla team offering **data & analytics
 - **Branch**: `master`
 - **Deploy**: Auto via `.github/workflows/pages.yml` on push
 
-## Tooling — RTK (required)
+## Tooling - RTK (required)
 
-**Always prefix shell commands with `rtk`** — including inside `&&` chains. RTK ([rtk-ai/rtk](https://github.com/rtk-ai/rtk)) filters noisy output from git, gh, build tools, tests, file ops, and more, saving 60–90% of token output. If RTK has no dedicated filter for a command it passes through unchanged, so it's always safe to use.
+**Always prefix shell commands with `rtk`** - including inside `&&` chains. RTK ([rtk-ai/rtk](https://github.com/rtk-ai/rtk)) filters noisy output from git, gh, build tools, tests, file ops, and more, saving 60-90% of token output. If RTK has no dedicated filter for a command it passes through unchanged, so it's always safe to use.
 
 Examples for this project:
 - `rtk git status` / `rtk git add index.html` / `rtk git commit -m "..."` / `rtk git push`
@@ -21,8 +21,8 @@ Examples for this project:
 
 | File | Purpose | Audience |
 |------|---------|----------|
-| `index.html` | Main page — the complete solutions catalog (single page) | Business stakeholders |
-| `engagement-guide.html` | Engagement Guide — effort estimates, interactive tools, starter packs, roadmap | Business planners, project sponsors |
+| `index.html` | Main page - the complete solutions catalog (single page) | Business stakeholders |
+| `engagement-guide.html` | Engagement Guide - effort estimates, interactive tools, starter packs, roadmap | Business planners, project sponsors |
 
 ## Key Context
 
@@ -30,22 +30,22 @@ Examples for this project:
 Internal Orkla team (not external vendors). We hand over everything deployed in the customer's environment. No licensing model. Our edge is the **Orkla Accelerator**: a continuously evolving toolkit of proven methods refined across every engagement. Each customer gets a copy; we keep the evolving version.
 
 ### Delivery Model
-- **Orkla Accelerator** — our toolkit, forked for each engagement (matching, processing, quality)
-- **Business Rules & Configuration** — customer-owned (source definitions, matching rules, KPI formulas)
-- **Infrastructure** — customer-owned platform, managed by Orkla IT, all data stays with customer
+- **Orkla Accelerator** - our toolkit, forked for each engagement (matching, processing, quality)
+- **Business Rules & Configuration** - customer-owned (source definitions, matching rules, KPI formulas)
+- **Infrastructure** - customer-owned platform, managed by Orkla IT, all data stays with customer
 
 ### Engagement Types
-- **Build** — new deployment (project engagement)
-- **Upgrade** — apply latest accelerator improvements
-- **Support** — optional retainer for managed ops
-- **Expand** — new use cases (analytics, automation, additional sources)
+- **Build** - new deployment (project engagement)
+- **Upgrade** - apply latest accelerator improvements
+- **Support** - optional retainer for managed ops
+- **Expand** - new use cases (analytics, automation, additional sources)
 
 ## Design System
 
 ### Colors (Orkla-branded)
 ```
---navy:    #7E0626   (Orkla burgundy — primary brand color)
---navy2:   #5A0419   (darker burgundy — gradients)
+--navy:    #7E0626   (Orkla burgundy - primary brand color)
+--navy2:   #5A0419   (darker burgundy - gradients)
 --teal:    #0D7C66   (Tier 1)
 --blue:    #2E5090   (Tier 2)
 --purple:  #6B4FA0   (Tier 3)
@@ -65,19 +65,19 @@ Internal Orkla team (not external vendors). We hand over everything deployed in 
 ### Tiers
 | Tier | Hours | Timeline | Platform/mo | Eng Support/mo |
 |------|-------|----------|-------------|----------------|
-| Foundation | 180–220h | ~5.5 weeks | $50–300 | 8–20h |
-| Multi-Source | 290–685h | 9–14 weeks | $150–600 | 16–40h |
-| Enterprise | 820–1,900h | 27–36+ weeks | $400–1,500 | 40–120h |
+| Foundation | 180-220h | ~5.5 weeks | $50-300 | 8-20h |
+| Multi-Source | 290-685h | 9-14 weeks | $150-600 | 16-40h |
+| Enterprise | 820-1,900h | 27-36+ weeks | $400-1,500 | 40-120h |
 
 ### Add-Ons (6 total)
 | Add-On | Hours | Monthly |
 |--------|-------|---------|
-| Power BI Reports | 40–80h | $20–80 |
-| Data Quality & Alerts | 40–80h | $20–80 |
-| Business Review Portal | 60–120h | $30–100 |
-| Historical Tracking | 30–50h | +$10–40 |
-| Additional Data Source | 40–85h/src | +$30–100 |
-| Currency & Calendar Alignment | 120–320h | $50–200 |
+| Power BI Reports | 40-80h | $20-80 |
+| Data Quality & Alerts | 40-80h | $20-80 |
+| Business Review Portal | 60-120h | $30-100 |
+| Historical Tracking | 30-50h | +$10-40 |
+| Additional Data Source | 40-85h/src | +$30-100 |
+| Currency & Calendar Alignment | 120-320h | $50-200 |
 
 **Important**: If you change a number, update it in BOTH HTML files.
 
@@ -87,22 +87,22 @@ Internal Orkla team (not external vendors). We hand over everything deployed in 
 3. Proof-point banner
 4. Challenge (FMCG-specific pain)
 5. **Outcomes** (what changes for your team)
-6. **How We Work** (delivery model — 3 pillars)
+6. **How We Work** (delivery model - 3 pillars)
 7. Add-Ons (6 cards)
 8. Investment (cost table with explanatory footnotes)
 9. FAQ (4 questions)
 10. CTA
 
 ## Design & Tone Guidelines
-- **Business-first language** — no technical jargon
-- **Orkla branded** — burgundy primary color (#7E0626), warm backgrounds
-- **Outcome-focused** — lead with what the business gets
-- **No overselling** — confident but understated
+- **Business-first language** - no technical jargon
+- **Orkla branded** - burgundy primary color (#7E0626), warm backgrounds
+- **Outcome-focused** - lead with what the business gets
+- **No overselling** - confident but understated
 - **Infrastructure is managed by Orkla IT**, not customer's local IT
 
 ## Known Issues / Pending Work
-- `contact@example.com` placeholder in CTA — replace when real email provided
-- Engagement guide still has hidden sections (mapping, SOW, risks) — to be cleaned or repurposed for internal technical twin
+- `contact@example.com` placeholder in CTA - replace when real email provided
+- Engagement guide still has hidden sections (mapping, SOW, risks) - to be cleaned or repurposed for internal technical twin
 
 ## Reference Document
-`C:\Users\medelm\Sales_Data_Harmonization_Estimate.md` — original effort estimate used as source of truth for Tier 1 numbers. Not in the repo.
+`C:\Users\medelm\Sales_Data_Harmonization_Estimate.md` - original effort estimate used as source of truth for Tier 1 numbers. Not in the repo.
