@@ -430,6 +430,105 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
   .tech-svg{min-width:720px}
 }
 
+/* ── Technical deep-dive blocks ── */
+.tech-deep{margin-top:36px;padding-top:28px;border-top:1px solid var(--line)}
+.tech-deep + .tech-deep{margin-top:32px}
+.td-head{margin-bottom:18px}
+.td-label{display:inline-flex;align-items:center;gap:8px;font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--teal);margin-bottom:6px}
+.td-label::before{content:'';width:22px;height:2px;background:var(--teal);border-radius:1px}
+.td-title{font-size:1.1rem;font-weight:700;color:var(--green-dark);letter-spacing:-.01em}
+.td-sub{font-size:.85rem;color:var(--muted);margin-top:6px;max-width:740px;line-height:1.55}
+
+/* Layer contracts */
+.lc-table{background:var(--card);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;box-shadow:var(--sh-s)}
+.lc-row{display:grid;grid-template-columns:170px 1fr 220px;gap:20px;padding:16px 20px;border-top:1px solid var(--line-l);align-items:start}
+.lc-row:first-child{border-top:none}
+.lc-head-row{background:var(--green-faint);font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--faint);padding:11px 20px}
+.lc-bound{display:inline-block;font-family:'Consolas','Monaco',monospace;font-size:.72rem;font-weight:700;color:var(--teal);background:rgba(13,124,102,.07);padding:5px 10px;border-radius:5px;border:1px solid rgba(13,124,102,.18);white-space:nowrap}
+.lc-c2{font-size:.82rem;color:var(--ink);line-height:1.6}
+.lc-c3{font-size:.7rem;color:var(--muted);font-family:'Consolas','Monaco',monospace;line-height:1.5}
+.lc-foot{margin-top:14px;padding:14px 18px;background:rgba(13,124,102,.05);border:1px solid rgba(13,124,102,.18);border-left:3px solid var(--teal);border-radius:var(--r);font-size:.78rem;color:var(--muted);line-height:1.6}
+.lc-foot strong{color:var(--green-dark);font-weight:700}
+@media(max-width:860px){
+  .lc-row{grid-template-columns:1fr;gap:8px}
+  .lc-head-row{display:none}
+  .lc-c3{padding-top:4px;border-top:1px dashed var(--line-l)}
+}
+
+/* Platform tech spec */
+.ts-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.ts-item{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:16px 18px;transition:var(--ease);position:relative;overflow:hidden}
+.ts-item::before{content:'';position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--teal);opacity:.35;transition:var(--ease)}
+.ts-item:hover{border-color:var(--teal);box-shadow:0 4px 14px rgba(13,124,102,.1);transform:translateY(-2px)}
+.ts-item:hover::before{opacity:1;width:4px}
+.ts-kind{font-family:'Consolas','Monaco',monospace;font-size:.6rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.1em;margin-bottom:6px}
+.ts-name{font-size:.88rem;font-weight:800;color:var(--green-dark);letter-spacing:-.01em;margin-bottom:4px}
+.ts-detail{font-size:.72rem;color:var(--muted);line-height:1.5}
+@media(max-width:1000px){.ts-grid{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:540px){.ts-grid{grid-template-columns:1fr}}
+
+/* Deployment model */
+.dm-flow{display:flex;align-items:stretch;gap:0;justify-content:space-between;margin-bottom:18px;flex-wrap:wrap}
+.dm-step{flex:1;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:18px 14px 14px;text-align:center;min-width:160px;transition:var(--ease);position:relative;overflow:hidden}
+.dm-step::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--teal-l))}
+.dm-step:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 6px 18px rgba(13,124,102,.12)}
+.dm-num{font-family:'Consolas','Monaco',monospace;font-size:.62rem;font-weight:700;color:var(--faint);letter-spacing:.14em;margin-bottom:6px}
+.dm-step-name{font-size:.96rem;font-weight:800;color:var(--green-dark);margin-bottom:5px;letter-spacing:-.01em}
+.dm-step-tech{font-family:'Consolas','Monaco',monospace;font-size:.66rem;color:var(--teal);line-height:1.4}
+.dm-arrow{display:flex;align-items:center;color:var(--teal);font-size:1.15rem;padding:0 8px;flex-shrink:0;opacity:.55;font-weight:700}
+.dm-note{background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--r);padding:18px 22px}
+.dm-note p{font-size:.82rem;color:var(--muted);line-height:1.6}
+.dm-note p + p{margin-top:10px}
+.dm-note strong{color:var(--green-dark);font-weight:700}
+@media(max-width:860px){
+  .dm-flow{gap:8px}
+  .dm-arrow{display:none}
+  .dm-step{flex:1 1 calc(50% - 4px);min-width:0}
+}
+
+/* Eddy technical note */
+.tech-note{margin-top:24px;background:var(--card);border:1px solid var(--line);border-left:3px solid var(--teal);border-radius:var(--r);padding:16px 22px;box-shadow:var(--sh-s)}
+.tn-label{font-size:.66rem;font-weight:700;text-transform:uppercase;letter-spacing:.14em;color:var(--teal);margin-bottom:8px}
+.tech-note p{font-size:.82rem;color:var(--muted);line-height:1.6}
+.tech-note code{font-family:'Consolas','Monaco',monospace;font-size:.72rem;background:rgba(13,124,102,.08);color:var(--teal);padding:1px 6px;border-radius:4px;border:1px solid rgba(13,124,102,.18)}
+.tech-note strong{color:var(--green-dark);font-weight:700}
+
+/* Lineage trace chip row */
+.lc-trace{display:flex;align-items:center;gap:6px;flex-wrap:wrap;margin:10px 0 8px;padding:10px 12px;background:var(--card);border:1px dashed rgba(13,124,102,.35);border-radius:6px}
+.lc-trace-label{font-family:'Consolas','Monaco',monospace;font-size:.58rem;font-weight:700;color:var(--teal);text-transform:uppercase;letter-spacing:.1em;margin-right:4px}
+.lc-trace-node{font-family:'Consolas','Monaco',monospace;font-size:.68rem;font-weight:600;color:var(--green-dark);background:var(--green-faint);padding:3px 8px;border-radius:4px;border:1px solid rgba(13,124,102,.2)}
+.lc-trace-arrow{color:var(--teal);font-weight:700;opacity:.6}
+
+/* Multi-BU isolation topology */
+.bu-topology{background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:20px 20px 16px;box-shadow:var(--sh-s)}
+.bu-row{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:14px}
+.bu-box{background:var(--green-faint);border:1px solid rgba(13,124,102,.25);border-top:3px solid var(--teal);border-radius:var(--r);padding:14px 16px}
+.bu-cat{font-family:'Consolas','Monaco',monospace;font-size:.7rem;font-weight:700;color:var(--teal);margin-bottom:10px;letter-spacing:.02em}
+.bu-items{list-style:none;padding:0;margin:0}
+.bu-items li{font-size:.72rem;color:var(--muted);padding:3px 0 3px 14px;position:relative}
+.bu-items li::before{content:'';position:absolute;left:0;top:10px;width:6px;height:6px;border-radius:50%;background:var(--teal);opacity:.55}
+.bu-shared{border:1px dashed var(--teal);border-radius:var(--r);padding:12px 16px;background:rgba(13,124,102,.04);text-align:center}
+.bu-shared-label{font-family:'Consolas','Monaco',monospace;font-size:.66rem;font-weight:700;color:var(--teal);letter-spacing:.04em;margin-bottom:4px}
+.bu-shared-text{font-size:.74rem;color:var(--muted);line-height:1.5}
+@media(max-width:780px){
+  .bu-row{grid-template-columns:1fr;gap:8px}
+}
+
+/* Agentic loop chips */
+.agent-loop{display:flex;align-items:stretch;gap:0;justify-content:space-between;flex-wrap:wrap}
+.agent-chip{flex:1;background:var(--card);border:1px solid var(--line);border-radius:var(--r);padding:14px 12px 12px;text-align:center;min-width:130px;transition:var(--ease);position:relative;overflow:hidden}
+.agent-chip::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--teal),var(--teal-l))}
+.agent-chip:hover{border-color:var(--teal);transform:translateY(-2px);box-shadow:0 6px 18px rgba(13,124,102,.12)}
+.agent-num{font-family:'Consolas','Monaco',monospace;font-size:.58rem;font-weight:700;color:var(--faint);letter-spacing:.12em;margin-bottom:4px;margin-top:2px}
+.agent-name{font-size:.88rem;font-weight:800;color:var(--green-dark);margin-bottom:4px;letter-spacing:-.01em}
+.agent-text{font-size:.68rem;color:var(--muted);line-height:1.45}
+.agent-sep{display:flex;align-items:center;color:var(--teal);font-size:1.05rem;padding:0 4px;opacity:.5;flex-shrink:0;font-weight:700}
+@media(max-width:860px){
+  .agent-sep{display:none}
+  .agent-loop{gap:8px}
+  .agent-chip{flex:1 1 calc(50% - 4px);min-width:0}
+}
+
 /* Investment */
 .inv-table{width:100%;border-collapse:separate;border-spacing:0;border:1px solid var(--line);border-radius:var(--r);overflow:hidden;font-size:.88rem;margin-top:24px}
 .inv-table thead th{background:var(--green-dark);color:#fff;padding:14px 18px;font-weight:600;font-size:.76rem;text-transform:uppercase;letter-spacing:.04em;text-align:left}
@@ -1556,6 +1655,294 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
       </div>
       <div class="tech-tooltip" id="techTooltip" aria-hidden="true"></div>
 
+      <!-- ── Eddy technical note ── -->
+      <div class="tech-note rv rv-d2">
+        <div class="tn-label">Eddy · the master data module in the diagram above</div>
+        <p>Eddy runs as a <strong>Databricks App</strong> hosted inside your own workspace — no external SaaS dependency. It reads and writes to Delta tables in your Unity Catalog, so every steward decision carries a full audit trail (<code>approved_by</code>, <code>approved_at</code>, <code>previous_value</code>, <code>decision_reason</code>). Auto-matching runs as a scheduled job using a composite of Levenshtein distance and TF-IDF similarity on product descriptors, with exact-match on GTIN/EAN where available. Matches above the configurable confidence threshold auto-approve; below-threshold candidates route to the steward queue. Mapping changes go live on the next pipeline refresh.</p>
+      </div>
+
+      <!-- ── Layer contracts ── -->
+      <div class="tech-deep rv rv-d2">
+        <div class="td-head">
+          <div class="td-label">Layer contracts</div>
+          <h3 class="td-title">What each boundary guarantees to the next</h3>
+          <p class="td-sub">The contracts that make the "swap any tool" promise real. Replace Auto Loader with Fivetran and only the first boundary changes — everything downstream stays intact because the envelope stays the same.</p>
+        </div>
+        <div class="lc-table">
+          <div class="lc-row lc-head-row">
+            <div>Boundary</div>
+            <div>What it guarantees</div>
+            <div>Enforced by</div>
+          </div>
+          <div class="lc-row">
+            <div><span class="lc-bound">Source → Bronze</span></div>
+            <div class="lc-c2">Raw files land with a standard envelope: source, file path, ingest timestamp, checksum. No schema enforcement — the contract is "faithful copy with full traceability."</div>
+            <div class="lc-c3">Auto Loader · Unity Catalog volumes</div>
+          </div>
+          <div class="lc-row">
+            <div><span class="lc-bound">Bronze → Silver</span></div>
+            <div class="lc-c2">Schema enforced — column names, types, nullability. Records that fail expectations are quarantined with a rejection reason. Valid records carry forward all Bronze envelope fields.</div>
+            <div class="lc-c3">Delta Live Tables expectations · schema enforcement</div>
+          </div>
+          <div class="lc-row">
+            <div><span class="lc-bound">Silver → Gold</span></div>
+            <div class="lc-c2">Every fact row resolves to a canonical product and customer from master data. Business logic applied, KPIs computed. Unresolvable records routed to Eddy for steward review — never silently dropped.</div>
+            <div class="lc-c3">SQL models · Unity Catalog lineage · Eddy queue</div>
+          </div>
+          <div class="lc-row">
+            <div><span class="lc-bound">Gold → Consumption</span></div>
+            <div class="lc-c2">Governed views with row-level and column-level security. Consumers connect via SQL, REST, or DirectQuery. Definitions are frozen at this boundary — no ad-hoc joins back to raw tables.</div>
+            <div class="lc-c3">Unity Catalog grants · Databricks SQL warehouse ACLs</div>
+          </div>
+        </div>
+        <div class="lc-foot">
+          <strong>Why this matters.</strong> Contracts are what keep components swappable. Replace one tool at one boundary — everything upstream and downstream keeps working because the shape of what flows across the boundary hasn't changed.
+          <div class="lc-trace">
+            <span class="lc-trace-label">Example trace</span>
+            <span class="lc-trace-node">gold.kpi_promo_share</span>
+            <span class="lc-trace-arrow">←</span>
+            <span class="lc-trace-node">gold.fact_sales_out</span>
+            <span class="lc-trace-arrow">←</span>
+            <span class="lc-trace-node">silver.nielsen_validated</span>
+            <span class="lc-trace-arrow">←</span>
+            <span class="lc-trace-node">bronze/nielsen/w15.csv</span>
+          </div>
+          Every Gold KPI traces back through Unity Catalog lineage to the exact Bronze file, load timestamp, and checksum — queryable via the Unity Catalog API. An auditor can walk from any report number to its source delivery in under a minute.
+        </div>
+      </div>
+
+      <!-- ── Component inventory ── -->
+      <div class="tech-deep rv rv-d2">
+        <div class="td-head">
+          <div class="td-label">Component inventory</div>
+          <h3 class="td-title">What's under the hood — for sign-off</h3>
+          <p class="td-sub">The concrete stack IT architects need to evaluate. Every item is standard Azure and Databricks — nothing proprietary, nothing that phones home.</p>
+        </div>
+        <div class="ts-grid">
+          <div class="ts-item">
+            <div class="ts-kind">Compute</div>
+            <div class="ts-name">Databricks Serverless</div>
+            <div class="ts-detail">Serverless SQL warehouses for queries, serverless jobs for pipeline execution. Classic clusters available as fallback.</div>
+          </div>
+          <div class="ts-item">
+            <div class="ts-kind">Storage</div>
+            <div class="ts-name">ADLS Gen2 + Delta</div>
+            <div class="ts-detail">All data persisted as Delta tables on Azure Data Lake Storage Gen2. Cold-tier archival for raw files beyond retention.</div>
+          </div>
+          <div class="ts-item">
+            <div class="ts-kind">Orchestration</div>
+            <div class="ts-name">Databricks Workflows</div>
+            <div class="ts-detail">DAG-based orchestration with dependency management, retry policies, and SLA alerts. ADF as an alternative for Fabric-native estates.</div>
+          </div>
+          <div class="ts-item">
+            <div class="ts-kind">Ingestion</div>
+            <div class="ts-name">Auto Loader + DLT</div>
+            <div class="ts-detail">Auto Loader for incremental ingestion. Delta Live Tables for declarative pipelines with built-in quality expectations.</div>
+          </div>
+          <div class="ts-item">
+            <div class="ts-kind">Catalog &amp; governance</div>
+            <div class="ts-name">Unity Catalog</div>
+            <div class="ts-detail">Centralized metastore for discovery, lineage, access control, and audit logging. Federated with Azure Entra ID.</div>
+          </div>
+          <div class="ts-item">
+            <div class="ts-kind">CI / CD</div>
+            <div class="ts-name">Git + Asset Bundles</div>
+            <div class="ts-detail">All code in Git. Databricks Asset Bundles for declarative workspace deployment — notebooks, jobs, pipelines, permissions, all as YAML.</div>
+          </div>
+          <div class="ts-item">
+            <div class="ts-kind">Infrastructure</div>
+            <div class="ts-name">Terraform / Bicep</div>
+            <div class="ts-detail">Workspace provisioning, networking, and identity configuration managed as code. State stored in your own backend.</div>
+          </div>
+          <div class="ts-item">
+            <div class="ts-kind">Monitoring</div>
+            <div class="ts-name">DLT logs + Azure Monitor</div>
+            <div class="ts-detail">Pipeline observability via DLT event logs. Infrastructure metrics via Azure Monitor. Alerts route to Teams, Slack, or PagerDuty.</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ── Deployment model ── -->
+      <div class="tech-deep rv rv-d2">
+        <div class="td-head">
+          <div class="td-label">Deployment model</div>
+          <h3 class="td-title">How the Accelerator lands in your tenant</h3>
+          <p class="td-sub">Is this a black box, or something your team can inspect and own? It's the second one — and here's how it gets there.</p>
+        </div>
+        <div class="dm-flow">
+          <div class="dm-step">
+            <div class="dm-num">STEP 01</div>
+            <div class="dm-step-name">Source</div>
+            <div class="dm-step-tech">Accelerator repo<br>Git · versioned · tagged</div>
+          </div>
+          <div class="dm-arrow">→</div>
+          <div class="dm-step">
+            <div class="dm-num">STEP 02</div>
+            <div class="dm-step-name">Package</div>
+            <div class="dm-step-tech">Asset Bundles<br>YAML configs · DABs</div>
+          </div>
+          <div class="dm-arrow">→</div>
+          <div class="dm-step">
+            <div class="dm-num">STEP 03</div>
+            <div class="dm-step-name">Deploy</div>
+            <div class="dm-step-tech">Your workspace<br>Terraform + DABs apply</div>
+          </div>
+          <div class="dm-arrow">→</div>
+          <div class="dm-step">
+            <div class="dm-num">STEP 04</div>
+            <div class="dm-step-name">Own</div>
+            <div class="dm-step-tech">Your Git fork<br>Full source · no lock-in</div>
+          </div>
+        </div>
+        <div class="dm-note">
+          <p><strong>What you receive.</strong> The Accelerator is delivered as a Databricks Asset Bundle — YAML configs, SQL models, Python notebooks, and pipeline definitions. During build we deploy from our versioned repo into your workspace. At handover the code is forked into your own Git repository. From that point, you own it completely.</p>
+          <p><strong>No proprietary runtime.</strong> No license key, no callback to our servers. Everything is standard Databricks, standard SQL, standard Python. Modify the KPI logic, add a new source, refactor the pipeline — you can, without our involvement.</p>
+          <p><strong>Upgrades are opt-in.</strong> New accelerator versions ship to you as pull requests. Your team reviews, merges, and deploys on your own schedule. No automatic updates, no forced migrations.</p>
+        </div>
+      </div>
+
+      <!-- ── Security & compliance ── -->
+      <div class="tech-deep rv rv-d2">
+        <div class="td-head">
+          <div class="td-label">Security &amp; compliance</div>
+          <h3 class="td-title">Table stakes, handled</h3>
+          <p class="td-sub">Your data stays in your tenant, in your region, under your identity provider. No data replication to our environment. No telemetry. No phone-home.</p>
+        </div>
+        <div class="ts-grid">
+          <div class="ts-item">
+            <div class="ts-kind">Data residency</div>
+            <div class="ts-name">Your Azure region</div>
+            <div class="ts-detail">Data never leaves the region you select. Nordics deployments typically run in North or West Europe. No replication to external environments.</div>
+          </div>
+          <div class="ts-item">
+            <div class="ts-kind">Encryption</div>
+            <div class="ts-name">AES-256 + TLS 1.2+</div>
+            <div class="ts-detail">At rest via ADLS Gen2 with Microsoft-managed keys. Customer-managed keys via Azure Key Vault supported for stricter BUs.</div>
+          </div>
+          <div class="ts-item">
+            <div class="ts-kind">Identity &amp; access</div>
+            <div class="ts-name">Azure Entra ID</div>
+            <div class="ts-detail">All auth via your Entra tenant — SSO, MFA, conditional access. Unity Catalog grants control table, column, and row-level access.</div>
+          </div>
+          <div class="ts-item">
+            <div class="ts-kind">Audit logging</div>
+            <div class="ts-name">Full audit trail</div>
+            <div class="ts-detail">Every data access, query, and permission change logged. Exportable to Azure Monitor, Sentinel, or Splunk. Lineage traces every table and column.</div>
+          </div>
+          <div class="ts-item">
+            <div class="ts-kind">Network</div>
+            <div class="ts-name">Private Link + VNet</div>
+            <div class="ts-detail">Workspace deployed into your VNet with Private Link endpoints. No public IP exposure. NSG rules control all ingress and egress.</div>
+          </div>
+          <div class="ts-item">
+            <div class="ts-kind">GDPR</div>
+            <div class="ts-name">Built for compliance</div>
+            <div class="ts-detail">Column-level security and dynamic data masking for personal data (loyalty IDs, transaction patterns). Deletion requests traced via lineage.</div>
+          </div>
+        </div>
+        <div class="dm-note" style="margin-top:18px">
+          <p><strong>Our operational posture.</strong> During build, our team accesses your workspace via your Entra ID tenant with time-limited, least-privilege service principals. All access is logged and revocable. At handover, our service principals are deactivated. If you choose managed operations, access is governed by a standing agreement with explicit scope and audit trail.</p>
+          <p><strong>Zero data extraction.</strong> We do not extract, copy, or store your data outside your environment at any point. Eddy runs inside your workspace. The Accelerator code lives in your Git repo. No telemetry, no phone-home, no analytics beacon.</p>
+        </div>
+      </div>
+
+      <!-- ── Multi-BU isolation (Tier 3) ── -->
+      <div class="tech-deep rv rv-d2">
+        <div class="td-head">
+          <div class="td-label">Multi-BU isolation · Tier 3</div>
+          <h3 class="td-title">Blast radius stops at the catalog boundary</h3>
+          <p class="td-sub">Each BU runs in its own Unity Catalog with its own compute, grants, schedules, and review queue. A broken pipeline or runaway query in one BU cannot affect another.</p>
+        </div>
+        <div class="bu-topology">
+          <div class="bu-row">
+            <div class="bu-box">
+              <div class="bu-cat">catalog: snacks_dk</div>
+              <ul class="bu-items">
+                <li>Own serverless compute</li>
+                <li>Own job schedules</li>
+                <li>Own Unity Catalog grants</li>
+                <li>Own Bronze / Silver / Gold</li>
+                <li>Own Eddy review queue</li>
+              </ul>
+            </div>
+            <div class="bu-box">
+              <div class="bu-cat">catalog: snacks_se</div>
+              <ul class="bu-items">
+                <li>Own serverless compute</li>
+                <li>Own job schedules</li>
+                <li>Own Unity Catalog grants</li>
+                <li>Own Bronze / Silver / Gold</li>
+                <li>Own Eddy review queue</li>
+              </ul>
+            </div>
+            <div class="bu-box">
+              <div class="bu-cat">catalog: snacks_no</div>
+              <ul class="bu-items">
+                <li>Own serverless compute</li>
+                <li>Own job schedules</li>
+                <li>Own Unity Catalog grants</li>
+                <li>Own Bronze / Silver / Gold</li>
+                <li>Own Eddy review queue</li>
+              </ul>
+            </div>
+          </div>
+          <div class="bu-shared">
+            <div class="bu-shared-label">Shared Unity metastore · Azure Entra ID · shared product hierarchy</div>
+            <div class="bu-shared-text">Cross-BU aggregation reads from governed views across catalogs. BU-level data is never copied — the PortCo layer queries in place.</div>
+          </div>
+        </div>
+        <div class="dm-note" style="margin-top:18px">
+          <p><strong>Compute isolation.</strong> Each BU catalog binds to its own serverless SQL warehouse or job cluster. A runaway query in one BU cannot consume another BU's compute budget.</p>
+          <p><strong>Data isolation.</strong> Unity Catalog enforces catalog-level access grants via Entra ID groups. A DK analyst cannot query SE tables unless explicitly granted cross-catalog access by the PortCo admin.</p>
+          <p><strong>Optional network isolation.</strong> For BUs with stricter requirements, workspaces can be deployed into separate VNets with Private Link — traffic never touches the public internet.</p>
+        </div>
+      </div>
+
+      <!-- ── Agentic monitoring deep-dive ── -->
+      <div class="tech-deep rv rv-d2">
+        <div class="td-head">
+          <div class="td-label">Agentic monitoring · add-on deep dive</div>
+          <h3 class="td-title">How the self-healing loop actually works</h3>
+          <p class="td-sub">Not magic. The agent detects, diagnoses, and proposes — humans approve before anything touches your pipelines. Every action is logged, every fix reviewed.</p>
+        </div>
+        <div class="agent-loop">
+          <div class="agent-chip">
+            <div class="agent-num">STEP 01</div>
+            <div class="agent-name">Detect</div>
+            <div class="agent-text">DLT event log fires a failure or quality breach</div>
+          </div>
+          <div class="agent-sep">→</div>
+          <div class="agent-chip">
+            <div class="agent-num">STEP 02</div>
+            <div class="agent-name">Diagnose</div>
+            <div class="agent-text">Agent inspects logs, schema diffs, source changes, historical patterns</div>
+          </div>
+          <div class="agent-sep">→</div>
+          <div class="agent-chip">
+            <div class="agent-num">STEP 03</div>
+            <div class="agent-name">Propose</div>
+            <div class="agent-text">Drafts a fix and a plain-language explanation</div>
+          </div>
+          <div class="agent-sep">→</div>
+          <div class="agent-chip">
+            <div class="agent-num">STEP 04</div>
+            <div class="agent-name">Approve</div>
+            <div class="agent-text">Steward reviews in Teams or Slack · one-click approve or override</div>
+          </div>
+          <div class="agent-sep">→</div>
+          <div class="agent-chip">
+            <div class="agent-num">STEP 05</div>
+            <div class="agent-name">Heal</div>
+            <div class="agent-text">Approved fix applied, pipeline re-runs, downstream unblocked</div>
+          </div>
+        </div>
+        <div class="dm-note" style="margin-top:18px">
+          <p><strong>Read-only by default.</strong> The agent has read-only access to pipeline code, schemas, and logs. It cannot execute changes directly — proposed fixes are always written to a review queue for human approval.</p>
+          <p><strong>What it can fix autonomously (after approval):</strong> schema evolution (promote rescued columns), re-run failed jobs with adjusted parameters, update quarantine rules for known bad-data patterns, restart stalled streaming queries.</p>
+          <p><strong>What it always escalates:</strong> data loss, security-relevant changes, business logic updates, and anything it cannot diagnose with high confidence.</p>
+        </div>
+      </div>
+
       <div class="tech-qa-head rv rv-d2">
         <div class="tech-qa-label">Engineers ask</div>
         <h3 class="tech-qa-title">Real questions, concrete answers</h3>
@@ -1590,6 +1977,21 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
           <div class="tech-ben-head"><div class="tech-ben-icon">↑</div><div class="tech-ben-title">How does this evolve without breaking my stack?</div></div>
           <div class="tech-ben-body">The Accelerator is versioned. Upgrade engagements pull new capabilities into your workspace deliberately — not automatically. Layer contracts stay stable, so upgrades add features rather than force migrations.</div>
           <div class="tech-ben-tech">Versioned · Opt-in upgrades</div>
+        </div>
+        <div class="tech-ben">
+          <div class="tech-ben-head"><div class="tech-ben-icon">⟳</div><div class="tech-ben-title">What happens when a source changes format?</div></div>
+          <div class="tech-ben-body">Auto Loader runs in schema evolution mode. New columns are captured in a rescued-data column, the pipeline keeps running, and an alert routes to the steward (or Agentic Monitoring) for promotion review. No 3 AM failure.</div>
+          <div class="tech-ben-tech">Auto Loader · Zero-downtime</div>
+        </div>
+        <div class="tech-ben">
+          <div class="tech-ben-head"><div class="tech-ben-icon">✓</div><div class="tech-ben-title">What's the testing strategy?</div></div>
+          <div class="tech-ben-body">Three layers before anything reaches production. Unit tests on SQL model logic, integration tests on a staging catalog with synthetic data, and data quality expectations on every production refresh. Breaches trigger alerts immediately.</div>
+          <div class="tech-ben-tech">Unit · Integration · DQ</div>
+        </div>
+        <div class="tech-ben">
+          <div class="tech-ben-head"><div class="tech-ben-icon">♺</div><div class="tech-ben-title">What's the recovery story?</div></div>
+          <div class="tech-ben-body">Every layer is idempotent and replayable. Bronze is append-only — a full re-ingest rebuilds everything downstream. Delta time-travel gives point-in-time recovery up to retention. For cross-region DR, geo-redundant storage and a standby workspace.</div>
+          <div class="tech-ben-tech">Idempotent · Time-travel</div>
         </div>
       </div>
     </div>
