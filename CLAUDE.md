@@ -8,6 +8,15 @@ Customer-facing microsite for an internal Orkla team offering **data & analytics
 - **Branch**: `master`
 - **Deploy**: Auto via `.github/workflows/pages.yml` on push
 
+## Tooling — RTK (required)
+
+**Always prefix shell commands with `rtk`** — including inside `&&` chains. RTK ([rtk-ai/rtk](https://github.com/rtk-ai/rtk)) filters noisy output from git, gh, build tools, tests, file ops, and more, saving 60–90% of token output. If RTK has no dedicated filter for a command it passes through unchanged, so it's always safe to use.
+
+Examples for this project:
+- `rtk git status` / `rtk git add index.html` / `rtk git commit -m "..."` / `rtk git push`
+- `rtk ls` / `rtk grep "pattern"` / `rtk wc -l index.html`
+- `rtk python -m http.server 8765` for local preview
+
 ## Files
 
 | File | Purpose | Audience |
