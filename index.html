@@ -27,7 +27,7 @@
   --ease:.3s cubic-bezier(.4,0,.2,1);
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
+html{scroll-behavior:smooth;scroll-padding-top:64px}
 body{font-family:'Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif;background:var(--bg);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column}
 
 /* Typography */
@@ -1025,9 +1025,7 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
         <div class="stage-arrow">→</div>
         <button class="stage-pill" type="button" data-stage="clean"><span class="stage-pill-num">02</span><span class="stage-pill-name">Clean</span><span class="stage-pill-sub">Silver</span></button>
         <div class="stage-arrow">→</div>
-        <button class="stage-pill" type="button" data-stage="harmonize"><span class="stage-pill-num">03</span><span class="stage-pill-name">Harmonize</span><span class="stage-pill-sub">Gold</span></button>
-        <div class="stage-arrow">→</div>
-        <button class="stage-pill" type="button" data-stage="serve"><span class="stage-pill-num">04</span><span class="stage-pill-name">Serve</span><span class="stage-pill-sub">Consumption</span></button>
+        <button class="stage-pill" type="button" data-stage="serve"><span class="stage-pill-num">03</span><span class="stage-pill-name">Serve</span><span class="stage-pill-sub">Gold</span></button>
       </div>
 
       <!-- SVG scene -->
@@ -1125,26 +1123,25 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
 
           <!-- FLOW PATHS: pipeline exit → consumers (diverging) -->
           <g class="flow-paths-out" fill="none">
-            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 890,280 C 935,280 935,110 980,110"/>
-            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 890,280 C 935,280 935,190 980,190"/>
-            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 890,280 Q 935,275 980,270"/>
-            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 890,280 C 935,280 935,350 980,350"/>
-            <path class="svg-flow svg-flow-path" data-min-tier="3" d="M 890,280 C 935,280 935,430 980,430"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 710,280 C 845,280 845,110 980,110"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 710,280 C 845,280 845,190 980,190"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 710,280 C 845,280 845,270 980,270"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 710,280 C 845,280 845,350 980,350"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="3" d="M 710,280 C 845,280 845,430 980,430"/>
           </g>
 
-          <!-- PIPELINE PLATFORM (background card under the 4 stages) -->
+          <!-- PIPELINE PLATFORM (background card under the 3 stages) -->
           <g class="pipeline-platform">
-            <rect x="300" y="160" width="600" height="240" rx="24" fill="url(#gPlatformBg)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
-            <text x="600" y="186" text-anchor="middle" fill="#8A9A8E" font-size="10" font-weight="700" letter-spacing="2" font-family="Segoe UI,sans-serif">MEDALLION PIPELINE · DATABRICKS</text>
+            <rect x="300" y="160" width="450" height="240" rx="24" fill="url(#gPlatformBg)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
+            <text x="525" y="186" text-anchor="middle" fill="#8A9A8E" font-size="10" font-weight="700" letter-spacing="2" font-family="Segoe UI,sans-serif">MEDALLION PIPELINE · DATABRICKS</text>
             <!-- Subtle top accent -->
-            <rect x="324" y="160" width="552" height="3" rx="1.5" fill="url(#gServe)" opacity=".5"/>
+            <rect x="324" y="160" width="402" height="3" rx="1.5" fill="url(#gGold)" opacity=".5"/>
           </g>
 
           <!-- PIPELINE FLOW between stages (short curves with particles) -->
           <g class="pipeline-inner-flow" fill="none">
             <path class="svg-flow-path" d="M 420,280 Q 435,280 450,280"/>
             <path class="svg-flow-path" d="M 570,280 Q 585,280 600,280"/>
-            <path class="svg-flow-path" d="M 720,280 Q 735,280 750,280"/>
           </g>
 
           <!-- PIPELINE STAGES (clickable) -->
@@ -1182,37 +1179,21 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
               <text x="510" y="340" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="8" font-weight="600" letter-spacing=".8">Stage 02</text>
             </g>
 
-            <!-- Stage 3: Gold / Harmonize -->
-            <g class="svg-stage" data-stage="harmonize">
+            <!-- Stage 3: Gold / Serve -->
+            <g class="svg-stage" data-stage="serve">
               <ellipse class="svg-stage-glow" cx="660" cy="360" rx="68" ry="8" fill="#C58E15" opacity=".5"/>
               <rect class="svg-stage-ring" x="602" y="202" width="116" height="156" rx="18" fill="none" stroke="#003D1F" stroke-width="2" stroke-dasharray="4 4"/>
               <rect class="svg-stage-face" x="610" y="210" width="100" height="140" rx="14" fill="url(#gGold)" filter="url(#fShadow)"/>
               <rect x="626" y="222" width="68" height="16" rx="4" fill="rgba(0,0,0,.22)"/>
               <text x="660" y="234" text-anchor="middle" fill="#fff" font-size="9" font-weight="800" letter-spacing="1.2">GOLD</text>
-              <!-- Icon: interlocking rings -->
-              <g transform="translate(660,272)" fill="none" stroke="#fff" stroke-width="2.5">
-                <circle cx="-7" cy="0" r="10"/>
-                <circle cx="7" cy="0" r="10"/>
-              </g>
-              <text x="660" y="324" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif">Harmonize</text>
-              <text x="660" y="340" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="8" font-weight="600" letter-spacing=".8">Stage 03</text>
-            </g>
-
-            <!-- Stage 4: Serve -->
-            <g class="svg-stage" data-stage="serve">
-              <ellipse class="svg-stage-glow" cx="810" cy="360" rx="68" ry="8" fill="#003D1F" opacity=".55"/>
-              <rect class="svg-stage-ring" x="752" y="202" width="116" height="156" rx="18" fill="none" stroke="#003D1F" stroke-width="2" stroke-dasharray="4 4"/>
-              <rect class="svg-stage-face" x="760" y="210" width="100" height="140" rx="14" fill="url(#gServe)" filter="url(#fShadow)"/>
-              <rect x="776" y="222" width="68" height="16" rx="4" fill="rgba(255,255,255,.2)"/>
-              <text x="810" y="234" text-anchor="middle" fill="#fff" font-size="9" font-weight="800" letter-spacing="1.2">SERVE</text>
               <!-- Icon: bar chart / monitor -->
-              <g transform="translate(810,272)" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <g transform="translate(660,272)" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="-16" y="-14" width="32" height="22" rx="2"/>
                 <path d="M -9,4 L -9,-2 M -3,4 L -3,-7 M 3,4 L 3,-10 M 9,4 L 9,-5"/>
                 <path d="M -6,14 L 6,14 M 0,8 L 0,14"/>
               </g>
-              <text x="810" y="324" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif">Serve</text>
-              <text x="810" y="340" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="8" font-weight="600" letter-spacing=".8">Stage 04</text>
+              <text x="660" y="324" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif">Serve</text>
+              <text x="660" y="340" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="8" font-weight="600" letter-spacing=".8">Stage 03</text>
             </g>
           </g>
 
@@ -1228,10 +1209,9 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
 
           <!-- BEAMS from master data core to each stage -->
           <g class="md-beams">
-            <path class="md-beam md-beam-pulse" d="M 578,560 L 360,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none"/>
-            <path class="md-beam md-beam-pulse" d="M 592,560 L 510,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none" style="animation-delay:.3s"/>
-            <path class="md-beam md-beam-pulse" d="M 608,560 L 660,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none" style="animation-delay:.6s"/>
-            <path class="md-beam md-beam-pulse" d="M 622,560 L 810,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none" style="animation-delay:.9s"/>
+            <path class="md-beam md-beam-pulse" d="M 585,560 L 360,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path class="md-beam md-beam-pulse" d="M 600,560 L 510,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none" style="animation-delay:.3s"/>
+            <path class="md-beam md-beam-pulse" d="M 615,560 L 660,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none" style="animation-delay:.6s"/>
           </g>
 
           <!-- MASTER DATA CORE -->
@@ -1401,8 +1381,8 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
           </div>
           <div class="detail-grid">
             <div class="detail-item"><div class="detail-item-label">What happens</div><div class="detail-item-text">Raw data lands from every source exactly as delivered. No transformations, no cleaning - just a faithful copy, with full traceability back to source for audit.</div></div>
-            <div class="detail-item"><div class="detail-item-label">Tools &amp; tech</div><div class="detail-item-text">Auto Loader, Delta Live Tables, Unity Catalog volumes as the source of truth store.</div></div>
-            <div class="detail-item"><div class="detail-item-label">Master data role</div><div class="detail-item-text">Source-side product and customer codes captured as-is. Mapping to your canonical definitions happens later in the Harmonize stage.</div></div>
+            <div class="detail-item"><div class="detail-item-label">Tools &amp; tech</div><div class="detail-item-text">Auto Loader, Lakeflow Spark Declarative Pipelines (SDP), Unity Catalog volumes as the source of truth store.</div></div>
+            <div class="detail-item"><div class="detail-item-label">Master data role</div><div class="detail-item-text">Source-side product and customer codes captured as-is. Mapping to your canonical definitions happens in the Serve stage.</div></div>
           </div>
         </div>
         <div class="detail-panel" data-stage="clean">
@@ -1412,30 +1392,19 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
           </div>
           <div class="detail-grid">
             <div class="detail-item"><div class="detail-item-label">What happens</div><div class="detail-item-text">Schema enforced, types cast, duplicates removed, invalid records quarantined. Quality tests run on every record and fire alerts when expectations break.</div></div>
-            <div class="detail-item"><div class="detail-item-label">Tools &amp; tech</div><div class="detail-item-text">Delta Live Tables expectations, data quality rules, alert dashboards in Power BI or Teams.</div></div>
-            <div class="detail-item"><div class="detail-item-label">Master data role</div><div class="detail-item-text">Potential duplicate product and customer records flagged for steward review in Eddy before they reach the harmonized layer.</div></div>
-          </div>
-        </div>
-        <div class="detail-panel" data-stage="harmonize">
-          <div class="detail-header">
-            <div class="detail-num">Stage 03 · Harmonize</div>
-            <div class="detail-title">Gold - one set of trusted numbers</div>
-          </div>
-          <div class="detail-grid">
-            <div class="detail-item"><div class="detail-item-label">What happens</div><div class="detail-item-text">Source identifiers resolved to your canonical master data. Business logic applied, KPIs computed, hierarchies joined. The result: one set of trusted facts every consumer agrees on.</div></div>
-            <div class="detail-item"><div class="detail-item-label">Tools &amp; tech</div><div class="detail-item-text">SQL models (dbt-style), Delta tables, Unity Catalog lineage for full traceability from source to KPI.</div></div>
-            <div class="detail-item"><div class="detail-item-label">Master data role</div><div class="detail-item-text">This is where Eddy earns its keep - every source-side product and customer code gets resolved to a single canonical ID, then joined to your hierarchy.</div></div>
+            <div class="detail-item"><div class="detail-item-label">Tools &amp; tech</div><div class="detail-item-text">Spark Declarative Pipelines expectations, data quality rules, alert dashboards in Power BI or Teams.</div></div>
+            <div class="detail-item"><div class="detail-item-label">Master data role</div><div class="detail-item-text">Potential duplicate product and customer records flagged for steward review in Eddy before they reach the Gold layer.</div></div>
           </div>
         </div>
         <div class="detail-panel" data-stage="serve">
           <div class="detail-header">
-            <div class="detail-num">Stage 04 · Serve</div>
-            <div class="detail-title">Consumption - ready for the business</div>
+            <div class="detail-num">Stage 03 · Serve</div>
+            <div class="detail-title">Gold - one trusted consumption layer</div>
           </div>
           <div class="detail-grid">
-            <div class="detail-item"><div class="detail-item-label">What happens</div><div class="detail-item-text">Harmonized data exposed through governed views. Power BI connects via DirectQuery or import, Chat analytics runs on the same tables, ThinkCell decks and exec packs all read from one layer.</div></div>
-            <div class="detail-item"><div class="detail-item-label">Tools &amp; tech</div><div class="detail-item-text">Unity Catalog grants, Databricks SQL, Power BI, REST APIs for downstream applications.</div></div>
-            <div class="detail-item"><div class="detail-item-label">Master data role</div><div class="detail-item-text">Definitions are already resolved upstream - consumers see consistent names and hierarchies without ever touching mapping logic.</div></div>
+            <div class="detail-item"><div class="detail-item-label">What happens</div><div class="detail-item-text">Source identifiers resolved to canonical master data, KPIs computed, hierarchies joined - then exposed through governed views. Power BI connects via DirectQuery or import, Chat analytics runs on the same tables, ThinkCell decks and exec packs all read from this single layer.</div></div>
+            <div class="detail-item"><div class="detail-item-label">Tools &amp; tech</div><div class="detail-item-text">SQL models, Delta tables, Unity Catalog lineage and grants, Databricks SQL, Power BI, REST APIs.</div></div>
+            <div class="detail-item"><div class="detail-item-label">Master data role</div><div class="detail-item-text">Eddy resolves every source-side product and customer code to a single canonical ID joined to your hierarchy. Consumers see consistent names without ever touching mapping logic.</div></div>
           </div>
         </div>
       </div>
@@ -1682,7 +1651,7 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
           <div class="lc-row">
             <div><span class="lc-bound">Bronze → Silver</span></div>
             <div class="lc-c2">Schema enforced - column names, types, nullability. Records that fail expectations are quarantined with a rejection reason. Valid records carry forward all Bronze envelope fields.</div>
-            <div class="lc-c3">Delta Live Tables expectations · schema enforcement</div>
+            <div class="lc-c3">Spark Declarative Pipelines expectations · schema enforcement</div>
           </div>
           <div class="lc-row">
             <div><span class="lc-bound">Silver → Gold</span></div>
@@ -1736,8 +1705,8 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
           </div>
           <div class="ts-item">
             <div class="ts-kind">Ingestion</div>
-            <div class="ts-name">Auto Loader + DLT</div>
-            <div class="ts-detail">Auto Loader for incremental ingestion. Delta Live Tables for declarative pipelines with built-in quality expectations.</div>
+            <div class="ts-name">Auto Loader + SDP</div>
+            <div class="ts-detail">Auto Loader for incremental ingestion. Lakeflow Spark Declarative Pipelines (SDP) for declarative pipelines with built-in quality expectations.</div>
           </div>
           <div class="ts-item">
             <div class="ts-kind">Catalog &amp; governance</div>
@@ -1746,8 +1715,8 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
           </div>
           <div class="ts-item">
             <div class="ts-kind">CI / CD</div>
-            <div class="ts-name">Git + Asset Bundles</div>
-            <div class="ts-detail">All code in Git. Databricks Asset Bundles for declarative workspace deployment - notebooks, jobs, pipelines, permissions, all as YAML.</div>
+            <div class="ts-name">Git + Automation Bundles</div>
+            <div class="ts-detail">All code in Git. Declarative Automation Bundles (DAB, formerly Databricks Asset Bundles) for declarative workspace deployment - notebooks, jobs, pipelines, permissions, all as YAML.</div>
           </div>
           <div class="ts-item">
             <div class="ts-kind">Infrastructure</div>
@@ -1756,8 +1725,8 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
           </div>
           <div class="ts-item">
             <div class="ts-kind">Monitoring</div>
-            <div class="ts-name">DLT logs + Azure Monitor</div>
-            <div class="ts-detail">Pipeline observability via DLT event logs. Infrastructure metrics via Azure Monitor. Alerts route to Teams, Slack, or PagerDuty.</div>
+            <div class="ts-name">SDP logs + Azure Monitor</div>
+            <div class="ts-detail">Pipeline observability via SDP event logs. Infrastructure metrics via Azure Monitor. Alerts route to Teams, Slack, or PagerDuty.</div>
           </div>
         </div>
       </div>
@@ -1779,7 +1748,7 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
           <div class="dm-step">
             <div class="dm-num">STEP 02</div>
             <div class="dm-step-name">Package</div>
-            <div class="dm-step-tech">Asset Bundles<br>YAML configs · DABs</div>
+            <div class="dm-step-tech">Automation Bundles<br>YAML configs · DABs</div>
           </div>
           <div class="dm-arrow">→</div>
           <div class="dm-step">
@@ -1795,7 +1764,7 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
           </div>
         </div>
         <div class="dm-note">
-          <p><strong>What you receive.</strong> The Accelerator is delivered as a Databricks Asset Bundle - YAML configs, SQL models, Python notebooks, and pipeline definitions. During build we deploy from our versioned repo into your workspace. At handover the code is forked into your own Git repository. From that point, you own it completely.</p>
+          <p><strong>What you receive.</strong> The Accelerator is delivered as a Declarative Automation Bundle (DAB) - YAML configs, SQL models, Python notebooks, and pipeline definitions. During build we deploy from our versioned repo into your workspace. At handover the code is forked into your own Git repository. From that point, you own it completely.</p>
           <p><strong>No proprietary runtime.</strong> No license key, no callback to our servers. Everything is standard Databricks, standard SQL, standard Python. Modify the KPI logic, add a new source, refactor the pipeline - you can, without our involvement.</p>
           <p><strong>Upgrades are opt-in.</strong> New accelerator versions ship to you as pull requests. Your team reviews, merges, and deploys on your own schedule. No automatic updates, no forced migrations.</p>
         </div>
@@ -1909,7 +1878,7 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
           <div class="agent-chip">
             <div class="agent-num">STEP 01</div>
             <div class="agent-name">Detect</div>
-            <div class="agent-text">DLT event log fires a failure or quality breach</div>
+            <div class="agent-text">SDP event log fires a failure or quality breach</div>
           </div>
           <div class="agent-sep">→</div>
           <div class="agent-chip">
@@ -2111,7 +2080,7 @@ const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.targ
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
 
 // Nav active state
-const navObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){document.querySelectorAll('.topbar a[href^="#"]').forEach(a=>a.classList.remove('active'));const a=document.querySelector('.topbar a[href="#'+x.target.id+'"]');if(a)a.classList.add('active')}})},{threshold:.2,rootMargin:'-52px 0px -60% 0px'});
+const navObs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){document.querySelectorAll('.topbar a[href^="#"]').forEach(a=>a.classList.remove('active'));const a=document.querySelector('.topbar a[href="#'+x.target.id+'"]');if(a)a.classList.add('active')}})},{threshold:0,rootMargin:'-64px 0px -80% 0px'});
 document.querySelectorAll('section[id]').forEach(s=>navObs.observe(s));
 
 // Architecture diagram - tier toggle + stage selector
@@ -2176,7 +2145,7 @@ document.querySelectorAll('section[id]').forEach(s=>navObs.observe(s));
       title:'Contract: typed, deduped, validated',
       input:'Bronze raw tables',
       output:'Typed columns, unique rows, expectation-passed records',
-      guarantees:'Schema versioned, DLT expectations enforced, freshness < 1 hour',
+      guarantees:'Schema versioned, SDP expectations enforced, freshness < 1 hour',
       failsWhen:'Upstream schema drift or a quality expectation is breached'
     },
     bronze: {
