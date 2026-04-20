@@ -1114,34 +1114,34 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
 
           <!-- FLOW PATHS: sources → pipeline entry (converging) -->
           <g class="flow-paths-in" fill="none">
-            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 220,110 C 265,110 265,280 310,280"/>
-            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 220,190 C 265,190 265,280 310,280"/>
-            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 220,270 Q 265,275 310,280"/>
-            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 220,350 C 265,350 265,280 310,280"/>
-            <path class="svg-flow svg-flow-path" data-min-tier="3" d="M 220,430 C 265,430 265,280 310,280"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 220,110 C 297,110 297,280 375,280"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 220,190 C 297,190 297,280 375,280"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 220,270 Q 297,275 375,280"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 220,350 C 297,350 297,280 375,280"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="3" d="M 220,430 C 297,430 297,280 375,280"/>
           </g>
 
           <!-- FLOW PATHS: pipeline exit → consumers (diverging) -->
           <g class="flow-paths-out" fill="none">
-            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 710,280 C 845,280 845,110 980,110"/>
-            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 710,280 C 845,280 845,190 980,190"/>
-            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 710,280 C 845,280 845,270 980,270"/>
-            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 710,280 C 845,280 845,350 980,350"/>
-            <path class="svg-flow svg-flow-path" data-min-tier="3" d="M 710,280 C 845,280 845,430 980,430"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 825,280 C 902,280 902,110 980,110"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="1" d="M 825,280 C 902,280 902,190 980,190"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 825,280 Q 902,275 980,270"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="2" d="M 825,280 C 902,280 902,350 980,350"/>
+            <path class="svg-flow svg-flow-path" data-min-tier="3" d="M 825,280 C 902,280 902,430 980,430"/>
           </g>
 
           <!-- PIPELINE PLATFORM (background card under the 3 stages) -->
           <g class="pipeline-platform">
-            <rect x="300" y="160" width="450" height="240" rx="24" fill="url(#gPlatformBg)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
-            <text x="525" y="186" text-anchor="middle" fill="#8A9A8E" font-size="10" font-weight="700" letter-spacing="2" font-family="Segoe UI,sans-serif">MEDALLION PIPELINE · DATABRICKS</text>
+            <rect x="300" y="160" width="600" height="240" rx="24" fill="url(#gPlatformBg)" stroke="#D5E3C2" stroke-width="1.2" filter="url(#fShadow)"/>
+            <text x="600" y="186" text-anchor="middle" fill="#8A9A8E" font-size="10" font-weight="700" letter-spacing="2" font-family="Segoe UI,sans-serif">MEDALLION PIPELINE · DATABRICKS</text>
             <!-- Subtle top accent -->
-            <rect x="324" y="160" width="402" height="3" rx="1.5" fill="url(#gGold)" opacity=".5"/>
+            <rect x="324" y="160" width="552" height="3" rx="1.5" fill="url(#gGold)" opacity=".5"/>
           </g>
 
           <!-- PIPELINE FLOW between stages (short curves with particles) -->
           <g class="pipeline-inner-flow" fill="none">
-            <path class="svg-flow-path" d="M 420,280 Q 435,280 450,280"/>
-            <path class="svg-flow-path" d="M 570,280 Q 585,280 600,280"/>
+            <path class="svg-flow-path" d="M 475,280 Q 512,280 550,280"/>
+            <path class="svg-flow-path" d="M 650,280 Q 687,280 725,280"/>
           </g>
 
           <!-- PIPELINE STAGES (clickable) -->
@@ -1149,51 +1149,51 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
 
             <!-- Stage 1: Bronze / Ingest -->
             <g class="svg-stage" data-stage="ingest">
-              <ellipse class="svg-stage-glow" cx="360" cy="360" rx="68" ry="8" fill="#B8782E" opacity=".5"/>
-              <rect class="svg-stage-ring" x="302" y="202" width="116" height="156" rx="18" fill="none" stroke="#003D1F" stroke-width="2" stroke-dasharray="4 4"/>
-              <rect class="svg-stage-face" x="310" y="210" width="100" height="140" rx="14" fill="url(#gBronze)" filter="url(#fShadow)"/>
+              <ellipse class="svg-stage-glow" cx="425" cy="360" rx="68" ry="8" fill="#B8782E" opacity=".5"/>
+              <rect class="svg-stage-ring" x="367" y="202" width="116" height="156" rx="18" fill="none" stroke="#003D1F" stroke-width="2" stroke-dasharray="4 4"/>
+              <rect class="svg-stage-face" x="375" y="210" width="100" height="140" rx="14" fill="url(#gBronze)" filter="url(#fShadow)"/>
               <!-- Tag -->
-              <rect x="326" y="222" width="68" height="16" rx="4" fill="rgba(0,0,0,.22)"/>
-              <text x="360" y="234" text-anchor="middle" fill="#fff" font-size="9" font-weight="800" letter-spacing="1.2">BRONZE</text>
+              <rect x="391" y="222" width="68" height="16" rx="4" fill="rgba(0,0,0,.22)"/>
+              <text x="425" y="234" text-anchor="middle" fill="#fff" font-size="9" font-weight="800" letter-spacing="1.2">BRONZE</text>
               <!-- Icon: funnel -->
-              <g transform="translate(360,272)" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <g transform="translate(425,272)" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M -18,-12 L 18,-12 L 6,4 L 6,20 L -6,20 L -6,4 Z"/>
               </g>
-              <text x="360" y="324" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif">Ingest</text>
-              <text x="360" y="340" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="8" font-weight="600" letter-spacing=".8">Stage 01</text>
+              <text x="425" y="324" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif">Ingest</text>
+              <text x="425" y="340" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="8" font-weight="600" letter-spacing=".8">Stage 01</text>
             </g>
 
             <!-- Stage 2: Silver / Clean -->
             <g class="svg-stage" data-stage="clean">
-              <ellipse class="svg-stage-glow" cx="510" cy="360" rx="68" ry="8" fill="#99A2B0" opacity=".5"/>
-              <rect class="svg-stage-ring" x="452" y="202" width="116" height="156" rx="18" fill="none" stroke="#003D1F" stroke-width="2" stroke-dasharray="4 4"/>
-              <rect class="svg-stage-face" x="460" y="210" width="100" height="140" rx="14" fill="url(#gSilver)" filter="url(#fShadow)"/>
-              <rect x="476" y="222" width="68" height="16" rx="4" fill="rgba(0,0,0,.22)"/>
-              <text x="510" y="234" text-anchor="middle" fill="#fff" font-size="9" font-weight="800" letter-spacing="1.2">SILVER</text>
+              <ellipse class="svg-stage-glow" cx="600" cy="360" rx="68" ry="8" fill="#99A2B0" opacity=".5"/>
+              <rect class="svg-stage-ring" x="542" y="202" width="116" height="156" rx="18" fill="none" stroke="#003D1F" stroke-width="2" stroke-dasharray="4 4"/>
+              <rect class="svg-stage-face" x="550" y="210" width="100" height="140" rx="14" fill="url(#gSilver)" filter="url(#fShadow)"/>
+              <rect x="566" y="222" width="68" height="16" rx="4" fill="rgba(0,0,0,.22)"/>
+              <text x="600" y="234" text-anchor="middle" fill="#fff" font-size="9" font-weight="800" letter-spacing="1.2">SILVER</text>
               <!-- Icon: sparkle/check shield -->
-              <g transform="translate(510,272)" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <g transform="translate(600,272)" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <path d="M 0,-16 L 14,-10 L 14,4 C 14,14 6,20 0,22 C -6,20 -14,14 -14,4 L -14,-10 Z"/>
                 <path d="M -6,4 L -2,9 L 7,-3"/>
               </g>
-              <text x="510" y="324" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif">Clean</text>
-              <text x="510" y="340" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="8" font-weight="600" letter-spacing=".8">Stage 02</text>
+              <text x="600" y="324" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif">Clean</text>
+              <text x="600" y="340" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="8" font-weight="600" letter-spacing=".8">Stage 02</text>
             </g>
 
             <!-- Stage 3: Gold / Serve -->
             <g class="svg-stage" data-stage="serve">
-              <ellipse class="svg-stage-glow" cx="660" cy="360" rx="68" ry="8" fill="#C58E15" opacity=".5"/>
-              <rect class="svg-stage-ring" x="602" y="202" width="116" height="156" rx="18" fill="none" stroke="#003D1F" stroke-width="2" stroke-dasharray="4 4"/>
-              <rect class="svg-stage-face" x="610" y="210" width="100" height="140" rx="14" fill="url(#gGold)" filter="url(#fShadow)"/>
-              <rect x="626" y="222" width="68" height="16" rx="4" fill="rgba(0,0,0,.22)"/>
-              <text x="660" y="234" text-anchor="middle" fill="#fff" font-size="9" font-weight="800" letter-spacing="1.2">GOLD</text>
+              <ellipse class="svg-stage-glow" cx="775" cy="360" rx="68" ry="8" fill="#C58E15" opacity=".5"/>
+              <rect class="svg-stage-ring" x="717" y="202" width="116" height="156" rx="18" fill="none" stroke="#003D1F" stroke-width="2" stroke-dasharray="4 4"/>
+              <rect class="svg-stage-face" x="725" y="210" width="100" height="140" rx="14" fill="url(#gGold)" filter="url(#fShadow)"/>
+              <rect x="741" y="222" width="68" height="16" rx="4" fill="rgba(0,0,0,.22)"/>
+              <text x="775" y="234" text-anchor="middle" fill="#fff" font-size="9" font-weight="800" letter-spacing="1.2">GOLD</text>
               <!-- Icon: bar chart / monitor -->
-              <g transform="translate(660,272)" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <g transform="translate(775,272)" fill="none" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
                 <rect x="-16" y="-14" width="32" height="22" rx="2"/>
                 <path d="M -9,4 L -9,-2 M -3,4 L -3,-7 M 3,4 L 3,-10 M 9,4 L 9,-5"/>
                 <path d="M -6,14 L 6,14 M 0,8 L 0,14"/>
               </g>
-              <text x="660" y="324" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif">Serve</text>
-              <text x="660" y="340" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="8" font-weight="600" letter-spacing=".8">Stage 03</text>
+              <text x="775" y="324" text-anchor="middle" fill="#fff" font-size="14" font-weight="700" font-family="Segoe UI,sans-serif">Serve</text>
+              <text x="775" y="340" text-anchor="middle" fill="rgba(255,255,255,.8)" font-size="8" font-weight="600" letter-spacing=".8">Stage 03</text>
             </g>
           </g>
 
@@ -1209,9 +1209,9 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
 
           <!-- BEAMS from master data core to each stage -->
           <g class="md-beams">
-            <path class="md-beam md-beam-pulse" d="M 585,560 L 360,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none"/>
-            <path class="md-beam md-beam-pulse" d="M 600,560 L 510,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none" style="animation-delay:.3s"/>
-            <path class="md-beam md-beam-pulse" d="M 615,560 L 660,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none" style="animation-delay:.6s"/>
+            <path class="md-beam md-beam-pulse" d="M 585,560 L 425,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none"/>
+            <path class="md-beam md-beam-pulse" d="M 600,560 L 600,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none" style="animation-delay:.3s"/>
+            <path class="md-beam md-beam-pulse" d="M 615,560 L 775,400" stroke="url(#gBeam)" stroke-width="4" stroke-linecap="round" fill="none" style="animation-delay:.6s"/>
           </g>
 
           <!-- MASTER DATA CORE -->
