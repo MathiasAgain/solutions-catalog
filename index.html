@@ -177,6 +177,18 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
 .ops-card .info-block{margin-top:0;align-self:start}
 @media(max-width:780px){.ops-grid{grid-template-columns:1fr;grid-template-rows:none}.ops-card{grid-template-rows:none;grid-row:auto;display:flex;flex-direction:column}}
 
+/* Lite view - hide heavy sections and their nav entries (?view=lite) */
+body.lite-view #step4,
+body.lite-view #architecture,
+body.lite-view #technical,
+body.lite-view .topbar a[href="#step4"],
+body.lite-view .topbar a[href="#architecture"],
+body.lite-view .topbar a[href="#technical"]{display:none}
+body.lite-view .step-strip > *:nth-last-child(-n+2){display:none}
+.lite-indicator{position:fixed;bottom:14px;right:14px;z-index:90;font-size:.72rem;font-weight:600;background:rgba(0,61,31,.94);color:#fff;padding:7px 13px;border-radius:20px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.18);opacity:.85;transition:opacity .2s;display:none}
+.lite-indicator:hover{opacity:1}
+body.lite-view .lite-indicator{display:inline-flex;align-items:center;gap:6px}
+
 /* Engagement note (top-line callout) */
 .engage-note{margin:24px 0 0;padding:18px 22px;border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,.65),rgba(255,255,255,.35));display:flex;flex-direction:column;gap:6px}
 .engage-note .en-label{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--navy)}
@@ -2090,7 +2102,22 @@ a.tc-example:hover{color:var(--green-dark);border-color:var(--green-mid);border-
   </section>
 -->
 
+<a class="lite-indicator" href="?view=full" title="Switch to full view">Lite view - show all</a>
+
 <script>
+// View mode - ?view=lite hides Add-ons, Architecture, Technical; ?view=full restores default
+(function(){
+  const params = new URLSearchParams(location.search);
+  const v = params.get('view');
+  if (v === 'lite') {
+    document.body.classList.add('lite-view');
+    const h2 = document.querySelector('#steps h2');
+    if (h2) h2.textContent = 'Build it in 3 steps';
+    const subtitle = document.querySelector('#steps .subtitle');
+    if (subtitle) subtitle.textContent = 'Pick a tier and platform, decide how involved you want us to be, and add up-skilling where you need it.';
+  }
+})();
+
 // Scroll reveal
 const obs=new IntersectionObserver(e=>{e.forEach(x=>{if(x.isIntersecting){x.target.classList.add('vis');obs.unobserve(x.target)}})},{threshold:.1,rootMargin:'0px 0px -30px 0px'});
 document.querySelectorAll('.rv').forEach(el=>obs.observe(el));
