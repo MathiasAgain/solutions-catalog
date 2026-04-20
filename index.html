@@ -185,9 +185,11 @@ body.lite-view .topbar a[href="#step4"],
 body.lite-view .topbar a[href="#architecture"],
 body.lite-view .topbar a[href="#technical"]{display:none}
 body.lite-view .step-strip > *:nth-last-child(-n+2){display:none}
-.lite-indicator{position:fixed;bottom:14px;right:14px;z-index:90;font-size:.72rem;font-weight:600;background:rgba(0,61,31,.94);color:#fff;padding:7px 13px;border-radius:20px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.18);opacity:.85;transition:opacity .2s;display:none}
-.lite-indicator:hover{opacity:1}
-body.lite-view .lite-indicator{display:inline-flex;align-items:center;gap:6px}
+.view-toggle{position:fixed;bottom:14px;right:14px;z-index:90;font-size:.72rem;font-weight:600;background:rgba(0,61,31,.94);color:#fff;padding:7px 13px;border-radius:20px;text-decoration:none;box-shadow:0 4px 12px rgba(0,0,0,.18);opacity:.75;transition:opacity .2s;display:inline-flex;align-items:center;gap:6px}
+.view-toggle:hover{opacity:1}
+.view-toggle.to-full{display:none}
+body.lite-view .view-toggle.to-lite{display:none}
+body.lite-view .view-toggle.to-full{display:inline-flex}
 
 /* Engagement note (top-line callout) */
 .engage-note{margin:24px 0 0;padding:18px 22px;border:1px solid var(--line);border-left:4px solid var(--navy);border-radius:8px;background:linear-gradient(180deg,rgba(255,255,255,.65),rgba(255,255,255,.35));display:flex;flex-direction:column;gap:6px}
@@ -2102,7 +2104,8 @@ body.lite-view .lite-indicator{display:inline-flex;align-items:center;gap:6px}
   </section>
 -->
 
-<a class="lite-indicator" href="?view=full" title="Switch to full view">Lite view - show all</a>
+<a class="view-toggle to-lite" href="?view=lite" title="Hide add-ons, architecture, and technical sections">Switch to lite view</a>
+<a class="view-toggle to-full" href="?view=full" title="Show all sections">Switch to full view</a>
 
 <script>
 // View mode - ?view=lite hides Add-ons, Architecture, Technical; ?view=full restores default
